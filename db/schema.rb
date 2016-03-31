@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331191000) do
+ActiveRecord::Schema.define(version: 20160331202633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: true do |t|
+    t.integer  "template_id", null: false
+    t.string   "content",     null: false
+    t.string   "secret_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["template_id"], name: "index_messages_on_template_id", using: :btree
+
+  create_table "secrets", force: true do |t|
+    t.integer  "sender_id",   null: false
+    t.integer  "receiver_id", null: false
+    t.integer  "message_id",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "secrets", ["message_id"], name: "index_secrets_on_message_id", using: :btree
+  add_index "secrets", ["receiver_id"], name: "index_secrets_on_receiver_id", using: :btree
+  add_index "secrets", ["sender_id"], name: "index_secrets_on_sender_id", using: :btree
+
+  create_table "templates", force: true do |t|
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "username",                            null: false
