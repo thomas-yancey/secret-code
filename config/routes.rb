@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+
+  get 'users/show'
+
+  devise_for :users
+  root 'welcome#index'
+  get 'users/:id' => 'users#show'
+  resources :welcome, only: [:index]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  root 'users#index'
-  resources :users
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
@@ -10,7 +16,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  #   get 'productrais/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
