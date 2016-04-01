@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
+
 
   devise_for :users
   root 'welcome#index'
@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :secrets
   resources :algorithms
+  get 'algorithms#update' => 'algorithms#answer'
   resources :messages
   resources :templates, only:[:index]
+  resources :users, only:[:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
