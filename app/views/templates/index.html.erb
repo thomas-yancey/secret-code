@@ -1,0 +1,5 @@
+<%@templates.each do |template|%>
+<!-- We need to get sample images, not the content. -->
+  <section><%=template.content%><%=link_to "Use this template", new_message_path(template_id: template.id) %></section>
+
+<% end %>

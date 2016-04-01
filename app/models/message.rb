@@ -3,6 +3,6 @@ class Message < ActiveRecord::Base
   has_many :users, through: :secrets, source: :sender
   belongs_to :template
 
-  validates :template, :content, :secret_key, presence: true
+  validates :template, :content, presence: true
 
 end

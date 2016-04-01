@@ -1,0 +1,10 @@
+<h1>Write Your Message</h1>
+<section>
+<%= form_for(@message) do |f| %>
+
+<%=f.text_area(:content, cols:40, rows:10, value: @template.content)  %>
+<%=f.submit%>
+<% end %>
+
+</section>
+
