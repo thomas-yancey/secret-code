@@ -1,0 +1,3 @@
+<% @users.each do |user| %>
+  <section><%=link_to user.username, secrets_path(receiver_id: user.id, message_id: @message.id), method: :create %></section>
+<% end %>
