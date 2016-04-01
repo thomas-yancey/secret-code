@@ -7,4 +7,10 @@ describe User do
     it { should validate_presence_of :password }
   end
 
+  context "associations" do
+    it { should have_many :received_messages }
+    it { should have_many :sent_messages }
+    it { should have_many :messages }
+  end
+
 end
