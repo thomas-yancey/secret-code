@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.3'
@@ -35,14 +35,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry-rails'
 
-gem 'guard'
-
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
 
 group :test do
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.1.1'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
@@ -58,3 +56,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'simplecov', :require => false, :group => :test

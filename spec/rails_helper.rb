@@ -7,6 +7,8 @@ require 'spec_helper'
 require 'rspec/rails'
 require "bundler/setup"
 
+require 'simplecov'
+SimpleCov.start 'rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 ::Bundler.require(:default, :test)
