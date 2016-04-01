@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160401153320) do
   create_table "messages", force: true do |t|
     t.integer  "template_id", null: false
     t.string   "content",     null: false
-    t.string   "secret_key",  null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
