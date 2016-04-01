@@ -33,12 +33,13 @@ ActiveRecord::Schema.define(version: 20160401153320) do
   add_index "messages", ["template_id"], name: "index_messages_on_template_id", using: :btree
 
   create_table "secrets", force: true do |t|
-    t.integer  "sender_id",    null: false
-    t.integer  "receiver_id",  null: false
-    t.integer  "message_id",   null: false
-    t.integer  "algorithm_id", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "sender_id",                    null: false
+    t.integer  "receiver_id",                  null: false
+    t.integer  "message_id",                   null: false
+    t.integer  "algorithm_id",                 null: false
+    t.boolean  "solved",       default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "secrets", ["algorithm_id"], name: "index_secrets_on_algorithm_id", using: :btree

@@ -5,6 +5,7 @@ class CreateSecrets < ActiveRecord::Migration
       t.references :receiver, index: true, null: false
       t.references :message, index: true, null: false
       t.references :algorithm, index: true, null: false
+      t.boolean :solved, default: false
 
       t.timestamps null: false
     end

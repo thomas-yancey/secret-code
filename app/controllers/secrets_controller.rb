@@ -11,6 +11,15 @@ class SecretsController < ApplicationController
     end
   end
 
+  def show
+    @secret = Secret.find_by(id: params[:id])
+    if @secret.solved
+      @message = @secret.message
+      redirect_to @message
+    end
+  end
+
+
   private
 
   def secret_params

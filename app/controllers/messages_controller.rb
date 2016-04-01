@@ -15,6 +15,20 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+    @message = Message.find_by(id: params[:id])
+    if @message.secrets.first.receiver == current_user
+      if @message.secrets.first.solved
+      else
+        flash[:notice] = "Solve the puzzle!"
+        redirect_to @message.secret
+      end
+    else
+      flash[:notice] = "You can't do that!"
+      redirect_to root_path
+    end
+  end
+
 private
 
   def message_params

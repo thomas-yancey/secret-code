@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :secrets
   resources :algorithms
+  get 'algorithms#update' => 'algorithms#answer'
   resources :messages
   resources :templates, only:[:index]
   resources :users, only:[:index, :show]
