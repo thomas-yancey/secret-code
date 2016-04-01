@@ -8,7 +8,7 @@ count_of_users.times do
   user.save
 end
 
-Template.create(content: "<<html>
+Template.create(content: "<html>
 <head>
   <title></title>
 </head>
@@ -16,7 +16,7 @@ Template.create(content: "<<html>
 <p>Fake Template1</p>
 </body>
 </html>")
-Template.create(content: "<<html>
+Template.create(content: "<html>
 <head>
   <title></title>
 </head>
@@ -24,7 +24,7 @@ Template.create(content: "<<html>
 <p>Fake Template2</p>
 </body>
 </html>")
-Template.create(content: "<<html>
+Template.create(content: "<html>
 <head>
   <title></title>
 </head>
@@ -36,7 +36,7 @@ Template.create(content: "<<html>
 templates = Template.all
 users = User.all
 (count_of_users * 5).times do
-  Message.create(template: templates.sample, content: Faker::Lorem.paragraph(2), secret_key: Faker::Hacker.abbreviation)
+  Message.create(template: templates.sample, content: Faker::Lorem.paragraph(2))
 end
 
 Message.all.each do |message|

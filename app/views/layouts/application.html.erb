@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>SecretCode</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'  %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
   <style type="text/css" media="screen">
@@ -34,9 +34,7 @@
 
 
    <% end %>
-    <% if flash.any? %>
-      <%= flash[:notice] %>
-    <% end %>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
