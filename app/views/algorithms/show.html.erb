@@ -1,15 +1,13 @@
 <div id="editor">
 <%= @algorithm.method_outline %>
 </div>
-
-<p><%= @algorithm.question %></p>
-<%= form_for(@algorithm) do |f| %>
-<% end %>
+<div class="algorithm-container">
+<p ><%= @algorithm.question %></p>
 
 <%= button_tag(:type => 'button') do %>
-  <% link_to "Run code", controller: :algorithms, action: :run_code, algorithm_id: @algorithm.id %>
+  <% link_to "Run code", controller: :algorithms, action: :run_code, algorithm_id: @algorithm.id, secret_id: @secret.id %>
 <% end %>
-
+</div>
 
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
