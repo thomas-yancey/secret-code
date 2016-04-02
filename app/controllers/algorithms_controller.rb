@@ -1,4 +1,5 @@
 class AlgorithmsController < ApplicationController
+
   def update
     answer = params[:algorithm][:answer]
     algorithm = Algorithm.find_by(id: params[:id])
@@ -12,6 +13,11 @@ class AlgorithmsController < ApplicationController
       flash[:notice] = "That was incorrect!"
       redirect_to :back
     end
+  end
+
+  def show
+    binding.pry
+    @algorithm = Algorithm.find(1)
   end
 
 end
