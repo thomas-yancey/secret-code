@@ -1,13 +1,13 @@
 <div id="editor">
-
+<%= @algorithm.method_outline %>
 </div>
 
-<p>Create a method that adds two numbers together and returns the sum</p>
+<p><%= @algorithm.question %></p>
 <%= form_for(@algorithm) do |f| %>
 <% end %>
 
 <%= button_tag(:type => 'button') do %>
-  <% link_to "Run code", controller: :algorithms, action: :run_code %>
+  <% link_to "Run code", controller: :algorithms, action: :run_code, algorithm_id: @algorithm.id %>
 <% end %>
 
 

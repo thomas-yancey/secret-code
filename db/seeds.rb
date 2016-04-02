@@ -32,11 +32,27 @@ Template.create(content: "<html>
     <p>Fake Template3</p>
   </body>
 </html>")
-Algorithm.create(case: "1+1", answer: "2")
-Algorithm.create(case: "2+2", answer: "4")
-Algorithm.create(case: "3+3", answer: "6")
-Algorithm.create(case: "4+4", answer: "8")
-Algorithm.create(case: "5+5", answer: "10")
+
+  Algorithm.create(question: "Create a method that takes two numbers and adds them together",
+                   method_outline: "def add(a,b)\n # your code here\nend",
+                   casetests: "1,1 2,2 4,3 5,5",
+                   caseanswers: "2 4 7 10")
+  Algorithm.create(question: "Create a method that takes two numbers and subtracts them from each other",
+                   method_outline: "def subtract(a,b)\n # your code here\nend",
+                   casetests: "1,1 2,2 4,3 5,5",
+                   caseanswers: "0 0 1 0")
+  Algorithm.create(question: "Create a method that takes two numbers and multiplies them other",
+                   method_outline:"def multiply(a,b)\n # your code here\nend",
+                   casetests:"1,1 2,2 4,3 5,5",
+                   caseanswers: "1, 4, 12, 25")
+  Algorithm.create(question: "Create a method that takes two numbers and divides them",
+                   method_outline:"def multiply(a,b)\n # your code here\nend",
+                   casetests:"1,1 2,2 4,3 5,5",
+                   caseanswers: "1 1 1 1")
+  # Algorithm.create(question: ,
+  #                  method_outline:,
+  #                  casetests:,
+  #                  caseanswers: "10")
 
 algorithms = Algorithm.all
 templates = Template.all
