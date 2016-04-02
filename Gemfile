@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'ace-rails-ap'
 
+gem 'simplecov', :require => false, :group => :test
+
 gem 'faker'
 
 gem 'devise'
@@ -56,4 +58,3 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'simplecov', :require => false, :group => :test

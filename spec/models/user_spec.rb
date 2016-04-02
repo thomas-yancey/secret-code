@@ -11,6 +11,7 @@ describe User do
     it { should have_many :received_messages }
     it { should have_many :sent_messages }
     it { should have_many :messages }
+    it { should have_many :secrets }
   end
 
 end
