@@ -1,5 +1,6 @@
 class Algorithm < ActiveRecord::Base
   has_many :secrets
+  validates :question, :method_outline, :casetests, :caseanswers, presence: true
 
   def self.convert_operators(str)
     str.gsub!("™", "+")
