@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
       if @message.secrets.first.solved
       else
         flash[:notice] = "Solve the puzzle!"
-        redirect_to @message.secret
+        redirect_to @message.secrets.first
       end
     else
       flash[:notice] = "You can't do that!"

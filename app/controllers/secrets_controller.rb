@@ -16,6 +16,8 @@ class SecretsController < ApplicationController
     if @secret.solved
       @message = @secret.message
       redirect_to @message
+    else
+      redirect_to algorithm_path(id: @secret.algorithm.id, secret_id: @secret.id)
     end
   end
 

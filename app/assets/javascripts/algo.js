@@ -2,10 +2,7 @@ $( document).ready(function(){
   $('button').on('click',function(e){
     event.preventDefault();
     var dataTransfer = editor.getValue();
-    dataTransfer = plusReplace(dataTransfer);
-    dataTransfer = equalReplace(dataTransfer);
-    dataTransfer = timesReplace(dataTransfer);
-    dataTransfer = minusReplace(dataTransfer);
+    dataTransfer = allReplace(dataTransfer);
     // dataTransfer = divideReplace(dataTransfer);
     dataPackage = {data: dataTransfer}
     debugger
@@ -14,10 +11,22 @@ $( document).ready(function(){
       data: dataPackage,
       method: "GET"
     }).done(function(response){
-      debugger
+      if (response.trim() === "false"){
+        alert("na");
+      } else {
+        $('.algorithm-container').append(response)
+      }
     })
   });
 });
+
+var allReplace = function(str){
+  str = plusReplace(str);
+  str = minusReplace(str);
+  str = equalReplace(str);
+  str = timesReplace(str);
+  return str
+}
 
 var plusReplace = function(str){
   return str.replace(/\+/g,"™");
