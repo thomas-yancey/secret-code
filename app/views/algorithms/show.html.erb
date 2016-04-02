@@ -7,7 +7,7 @@
 <% end %>
 
 <%= button_tag(:type => 'button') do %>
-  <% link_to "Run code", '/algorithms#create' %>
+  <% link_to "Run code", controller: :algorithms, action: :run_code %>
 <% end %>
 
 
