@@ -1,20 +1,17 @@
-<h1>Write Your Message</h1>
-<section>
-<%= form_for(@message) do |f| %>
-<%=f.hidden_field :template_id, value: @template.id %>
-<%=f.text_area(:content, cols:40, rows:10, value: @template.content)  %>
-<%=f.submit%>
-<% end %>
-
-</section>
-
 <div id="editor">
   <%= @template.content %>
+</div>
+
+<div id="message-preview" class="template-<%= @template.id %>">
+
+<iframe src="<%= template_path(@template.id) %>">
+</iframe>
+
 </div>
 
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.getSession().setMode("ace/mode/ruby");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/html");
 </script>

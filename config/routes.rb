@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :algorithms
   get 'algorithms#update' => 'algorithms#answer'
   resources :messages
-  resources :templates, only:[:index]
+  resources :templates, only:[:index, :show]
   resources :users, only:[:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
