@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20160401153320) do
   enable_extension "plpgsql"
 
   create_table "algorithms", force: true do |t|
-    t.text     "case",       null: false
-    t.text     "answer",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "question",       null: false
+    t.string   "method_outline", null: false
+    t.string   "casetests",      null: false
+    t.string   "caseanswers",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "messages", force: true do |t|

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
   get 'users/:id' => 'users#show'
+  get '/algorithms/run_code', to: 'algorithms#run_code', as: 'run_code'
+
   resources :welcome, only: [:index]
   resources :secrets
   resources :algorithms

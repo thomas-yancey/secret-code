@@ -1,0 +1,19 @@
+<div id="editor">
+<%= @algorithm.method_outline %>
+</div>
+
+<p><%= @algorithm.question %></p>
+<%= form_for(@algorithm) do |f| %>
+<% end %>
+
+<%= button_tag(:type => 'button') do %>
+  <% link_to "Run code", controller: :algorithms, action: :run_code, algorithm_id: @algorithm.id %>
+<% end %>
+
+
+<script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/ruby");
+</script>
