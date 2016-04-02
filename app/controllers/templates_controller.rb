@@ -6,6 +6,7 @@ class TemplatesController < ApplicationController
 
   def show
     @template = Template.find_by(id: params[:id])
+    render layout: false
   end
 
 end

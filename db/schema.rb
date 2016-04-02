@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(version: 20160401153320) do
   add_index "secrets", ["sender_id"], name: "index_secrets_on_sender_id", using: :btree
 
   create_table "templates", force: true do |t|
-    t.text     "content",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",       null: false
+    t.string   "preview_url", null: false
+    t.text     "content",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: true do |t|

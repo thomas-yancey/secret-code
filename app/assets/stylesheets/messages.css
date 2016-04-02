@@ -20,4 +20,5 @@ iframe {
   margin: 30px;
   width: 50%;
   height: 500px;
+  border: 2px solid #ccc;
 }
