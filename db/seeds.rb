@@ -8,30 +8,36 @@ count_of_users.times do
   user.save
 end
 
-Template.create(content: "<html>
-  <head>
+Template.create(title: "Fake Template 1",
+  preview_url: "assets/template-previews/t-1.jpg",
+  content: "<head>
     <title></title>
   </head>
   <body>
     <p>Fake Template1</p>
-  </body>
-</html>")
-Template.create(content: "<html>
-  <head>
+  </body>")
+Template.create(title: "Fake Template 2",
+  preview_url: "assets/template-previews/t-2.jpg",
+  content: "<head>
     <title></title>
   </head>
   <body>
     <p>Fake Template2</p>
-  </body>
-</html>")
-Template.create(content: "<html>
-  <head>
+  </body>")
+Template.create(title: "Fake Template 3",
+  preview_url: "assets/template-previews/t-3.jpg",
+  content: "<head>
     <title></title>
   </head>
   <body>
     <p>Fake Template3</p>
-  </body>
-</html>")
+  </body>")
+
+Algorithm.create(case: "1+1", answer: "2")
+Algorithm.create(case: "2+2", answer: "4")
+Algorithm.create(case: "3+3", answer: "6")
+Algorithm.create(case: "4+4", answer: "8")
+Algorithm.create(case: "5+5", answer: "10")
 
   Algorithm.create(question: "Create a method that takes two numbers and adds them together",
                    method_outline: "def add(a,b)\n # your code here\nend",
@@ -49,10 +55,6 @@ Template.create(content: "<html>
                    method_outline:"def multiply(a,b)\n # your code here\nend",
                    casetests:"1,1 2,2 4,3 5,5",
                    caseanswers: "1 1 1 1")
-  # Algorithm.create(question: ,
-  #                  method_outline:,
-  #                  casetests:,
-  #                  caseanswers: "10")
 
 algorithms = Algorithm.all
 templates = Template.all
