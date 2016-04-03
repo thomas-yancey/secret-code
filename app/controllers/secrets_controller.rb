@@ -21,7 +21,6 @@ class SecretsController < ApplicationController
     end
   end
 
-
   private
 
   def secret_params
