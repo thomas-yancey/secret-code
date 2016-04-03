@@ -1,7 +1,12 @@
-<h2>Received Messages</h2>
-<%= render @user.received_messages %>
+<%if current_user_profile?(@user)%>
+  <h2>Received Messages</h2>
+  <%= render @user.received_messages %>
 
-<h2>Sent Messages</h2>
-<%= render @user.sent_messages %>
+  <h2>Sent Messages</h2>
+  <%= render @user.sent_messages %>
+  <%=link_to "Start a Secret Message!", templates_path%>
 
-<%=link_to "Start a Secret Message!", templates_path%>
+<% else %>
+  <h1>Test</h1>
+<% end %>
+
