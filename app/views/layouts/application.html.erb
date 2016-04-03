@@ -2,37 +2,30 @@
 <html>
 <head>
   <title>SecretCode</title>
+  <link href='https://fonts.googleapis.com/css?family=McLaren' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all'  %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
-  <style type="text/css" media="screen">
-    #editor {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
-</style>
 </head>
 
 <body>
-    <nav class = "nav-bar">
+  <header>
+    <nav class="nav-bar">
     <% if user_signed_in? %>
       <ul>
-        <li><%= link_to 'Home', '/' %></li>
         <li><%= link_to current_user.username, "/users/#{current_user.id}" %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       </ul>
     <% else %>
        <ul>
-        <li><%= link_to 'Home', '/' %></li>
           <li> <%= link_to 'Login', new_user_session_path %></li>
           <li> <%= link_to 'Signup', new_user_registration_path %></li>
         </ul>
    <% end %>
  </nav>
+<h1><%= link_to 'SecretCode', '/' %></h1>
+</header>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
