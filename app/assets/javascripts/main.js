@@ -16,9 +16,7 @@ $( document).ready(function(){
       }
     })
   });
-  if(document.getElementById("myframe")){
-  setInterval(function(){ resetIframe(); }, 300);
-}
+
 });
 
 var allReplace = function(str){
