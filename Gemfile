@@ -49,6 +49,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'rspec-activemodel-mocks'
+
 end
 # Use unicorn as the app server
 # gem 'unicorn'
