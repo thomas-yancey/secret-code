@@ -10,8 +10,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require "bundler/setup"
-require_relative 'support/controller_helpers'
-
+require "factory_girl_rails"
 
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -45,12 +44,8 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.include ControllerHelpers, type: :controller
-  Warden.test_mode!
+  config.include Devise::TestHelpers, :type => :controller
 
-  config.after do
-    Warden.test_reset!
-  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
