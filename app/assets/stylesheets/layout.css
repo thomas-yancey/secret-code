@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: 'McLaren', cursive;
+  color: #84A550;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  height: 100px;
+  background: url("/assets/detective.png") no-repeat 20px 15px;
+  background-color: #FFCB00;
+  border-bottom: 2px solid #F68A1D;
+}
+
+header h1 {
+  margin: 0 0 0 150px;
+  font-size: 5rem;
+  text-shadow: 2px 2px #FF0000;
+}
+
+header h1 a:link,
+header h1 a:visited,
+header h1 a:hover,
+header h1 a:active {
+  color: #1273AC;
+}
+
+nav {
+  float: right;
+}
+
+nav li {
+  display: inline-block;
+  padding: 0 1rem;
+}
