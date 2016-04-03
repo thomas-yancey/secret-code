@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   devise_for :users
   root 'welcome#index'
   get 'users/:id' => 'users#show'
@@ -14,6 +12,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :templates, only:[:index, :show]
   resources :users, only:[:index, :show]
+  resources :friendships, only: [:create, :update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
