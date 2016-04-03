@@ -1,7 +1,33 @@
-<h2>Received Messages</h2>
-<%= render @user.received_messages %>
+<%if current_user_profile?(@user)%>
+<h3>Friends</h3>
+<ul>
+  <% @user.friends.each do |friend| %>
+  <li>
+    <%=friend.email%>
+    <% if current_user_profile?(@user) %>
+      <%= link_to "Remove", friendship_path(id: friend), method: :delete %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+  <h4>Friend Requests</h4>
+  <ul>
+    <% @user.requested_friendships.each do |request| %>
+    <li>
+      <%=request.email %>
+      <%= link_to "Accept Request", friendship_path(id: request), method: "put" %>
+      <%= link_to "Decline Request", friendship_path(id: request), method: :delete %>
+    </li>
+    <% end %>
+  </ul>
+  <h2>Received Messages</h2>
+  <%= render @user.received_messages %>
 
-<h2>Sent Messages</h2>
-<%= render @user.sent_messages %>
-
-<%=link_to "Start a Secret Message!", templates_path%>
+  <h2>Sent Messages</h2>
+  <%= render @user.sent_messages %>
+  <%=link_to "Start a Secret Message!", templates_path%>
+<% else %>
+  <% unless current_user == @user %>
+    <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
+  <% end %>
+<% end %>
