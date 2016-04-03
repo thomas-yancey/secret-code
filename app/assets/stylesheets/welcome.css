@@ -1,0 +1,19 @@
+main {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  background-color: #fff;
+  border: 3px solid #F68A1D;
+  border-radius: 12px;
+  color: #1273AC;
+}
+
+main h2 {
+  margin: 10px 0;
+  font-size: 2.5rem;
+}
+
+main p {
+  font-size: 1.2rem;
+}
