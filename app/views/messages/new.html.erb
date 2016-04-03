@@ -15,8 +15,8 @@
 <% end %>
  <%= form_for(@message) do |f| %>g
 
- +<%=f.hidden_field :template_id, value: @template.id %>
-  +<%=f.hidden_field :content, value: @param %>
+  <%=f.hidden_field :template_id, value: @template.id %>
+  <%=f.hidden_field :content, value: @param %>
   <%=f.submit%>
   <% end %>
 

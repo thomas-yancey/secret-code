@@ -1,5 +1,6 @@
-<% if answer %>
+<% if answer.empty? %>
   <%=link_to "Your message!", @secret.message%>
 <% else %>
- <%= "false" %>
+ <% woot = answer.map {|thing| thing.join(",")}.join("|") %>
+ <%= woot %>
 <% end %>

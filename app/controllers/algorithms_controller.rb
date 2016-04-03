@@ -37,15 +37,10 @@ class AlgorithmsController < ApplicationController
     user_method = eval(params[:data])
     array_of_answers = @algorithm.caseanswers_to_array
     array_of_inputs = @algorithm.casetests_to_array
+
     incorrect_answers = []
 
-    @algorithm.run_user_code(user_method)
-
     array_of_inputs.each_with_index do |inputs,idx|
-
-      break if Timeout::timeout(4){
-          method(user_method).call(inputs[0],inputs[1])
-      }
 
       begin
         method(user_method).call(inputs[0],inputs[1])
@@ -57,12 +52,7 @@ class AlgorithmsController < ApplicationController
         end
       end
     end
-    binding.pry
-    answer = incorrect_answers.empty?
-    if answer
-      @secret.update_attributes(solved: true)
-    end
-    render 'algorithms/_run_code', locals: {answer: answer}, layout: false
+    render 'algorithms/_run_code', locals: {answer: incorrect_answers}, layout: false
   end
 
 end

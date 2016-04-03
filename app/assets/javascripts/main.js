@@ -2,6 +2,7 @@ $( document).ready(function(){
   $('button').on('click',function(e){
     event.preventDefault();
     var dataTransfer = editor.getValue();
+    $('#mistakes').empty();
     dataTransfer = allReplace(dataTransfer);
     dataPackage = {data: dataTransfer}
     $.ajax({
@@ -9,10 +10,13 @@ $( document).ready(function(){
       data: dataPackage,
       method: "GET"
     }).done(function(response){
-      if (response.trim() === "false"){
-        alert("Try again!");
-      } else {
+      if (response.trim() === "true"){
         $('.algorithm-container').append(response)
+      } else {
+        $('#mistakes').append("<ul>Failing test cases</ul>");
+        for (e of response.trim().split("|")){
+          $('#mistakes').append("<li>" + e + "</li>");
+        }
       }
     })
   });
@@ -24,7 +28,6 @@ $( document).ready(function(){
     var dataTransfer = editor.getValue();
     dataTransfer = allReplace(dataTransfer);
     dataPackage = {data: dataTransfer};
-    debugger;
     $.ajax({
       url: event.currentTarget.action,
       data: dataPackage,
