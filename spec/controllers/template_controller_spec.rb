@@ -8,7 +8,8 @@ describe TemplatesController do
         sign_in
         get :index
         expect(assigns(:templates)).to eq Template.all
-    end
+      end
+
     it "should not allow users to view the index without logging in" do
       sign_in nil
       get :index
