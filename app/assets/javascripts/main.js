@@ -51,4 +51,7 @@ var equalReplace = function(str){
 var timesReplace = function(str){
   return str.replace(/\*/g,"•");
 }
+var getContent = function(){
+  return editor.getValue();
+}
 

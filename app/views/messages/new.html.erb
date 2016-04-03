@@ -8,6 +8,17 @@
 </iframe>
 
 </div>
+<% @param = capture do %>
+<script type="text/javascript">
+     getContent();
+</script>
+<% end %>
+ <%= form_for(@message) do |f| %>g
+ 
+ +<%=f.hidden_field :template_id, value: @template.id %>
+  +<%=f.hidden_field :content, value: @param %>
+  <%=f.submit%>
+  <% end %>
 
 <%= link_to "test", templates_run_code_path, class: "update-iframe" %>
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
