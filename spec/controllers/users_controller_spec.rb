@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe UsersController do
-  render_views
 
   before (:each) do
     @user = FactoryGirl.create(:user)
@@ -20,6 +19,13 @@ describe UsersController do
     it "should have a current user" do
       get :show, id: @user
       expect(response).to be_successful
+    end
+  end
+
+  context "index" do
+    it "should stop users from visiting index page without a message id" do
+      get :index, receiver_id: @user
+      expect(response).to redirect_to(root_path)
     end
   end
 
