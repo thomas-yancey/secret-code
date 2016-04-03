@@ -1,5 +1,5 @@
 class SecretsController < ApplicationController
-
+  before_action :authenticate_user!
   def create
     secret = Secret.new(secret_params)
     if secret.save

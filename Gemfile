@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+# ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.3'
@@ -49,6 +49,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'rspec-activemodel-mocks'
+
 end
 # Use unicorn as the app server
 # gem 'unicorn'

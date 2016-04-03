@@ -84,7 +84,7 @@ Template.create(title: "Fake Template 3",
                    casetests:"1,1 2,2 4,3 5,5",
                    caseanswers: "1, 4, 12, 25")
   Algorithm.create(question: "Create a method that takes two numbers and divides them",
-                   method_outline:"def multiply(a,b)\n # your code here\nend",
+                   method_outline:"def divide(a,b)\n # your code here\nend",
                    casetests:"1,1 2,2 4,3 5,5",
                    caseanswers: "1 1 1 1")
 
