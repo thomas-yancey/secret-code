@@ -4,7 +4,7 @@
   <% @user.friends.each do |friend| %>
   <li>
     <%=friend.email%>
-    <% if current_user == @user %>
+    <% if current_user_profile?(@user) %>
       <%= link_to "Remove", friendship_path(id: friend), method: :delete %>
     <% end %>
   </li>
