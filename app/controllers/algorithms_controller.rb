@@ -1,5 +1,6 @@
 class AlgorithmsController < ApplicationController
 
+
   def update
     answer = params[:algorithm][:answer]
     algorithm = Algorithm.find_by(id: params[:id])
@@ -29,6 +30,7 @@ class AlgorithmsController < ApplicationController
   end
 
   def run_code
+
     @secret = Secret.find_by(id: params[:secret_id])
     @algorithm = Algorithm.find_by(id:params[:algorithm_id])
     Algorithm.convert_operators(params[:data])
@@ -36,13 +38,31 @@ class AlgorithmsController < ApplicationController
     array_of_answers = @algorithm.caseanswers_to_array
     array_of_inputs = @algorithm.casetests_to_array
     incorrect_answers = []
+
+    @algorithm.run_user_code(user_method)
+
     array_of_inputs.each_with_index do |inputs,idx|
-      if method(user_method).call(inputs[0],inputs[1]) != array_of_answers[idx]
+
+      break if Timeout::timeout(4){
+          method(user_method).call(inputs[0],inputs[1])
+      }
+
+      begin
+        method(user_method).call(inputs[0],inputs[1])
+      rescue
+        incorrect_answers << [inputs[0],inputs[1]]
+      else
+        if method(user_method).call(inputs[0],inputs[1]) != array_of_answers[idx]
           incorrect_answers << [inputs[0],inputs[1]]
+        end
       end
     end
-    @secret.update_attributes(solved: true)
+    binding.pry
     answer = incorrect_answers.empty?
+    if answer
+      @secret.update_attributes(solved: true)
+    end
     render 'algorithms/_run_code', locals: {answer: answer}, layout: false
   end
+
 end

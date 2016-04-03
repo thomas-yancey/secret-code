@@ -19,7 +19,22 @@ $( document).ready(function(){
   if (document.getElementById("myframe")){
     $('body').keyup(_.debounce( resetIframe, 150))
   }
+  $('#new_message').on('click', function(event){
+  console.log("blocked");
+    var dataTransfer = editor.getValue();
+    dataTransfer = allReplace(dataTransfer);
+    dataPackage = {data: dataTransfer};
+    debugger;
+    $.ajax({
+      url: event.currentTarget.action,
+      data: dataPackage,
+      type: "POST",
+    }).done(function(response){
+      debugger;
+    })
+  });
 });
+
 
 var allReplace = function(str){
   str = plusReplace(str);
