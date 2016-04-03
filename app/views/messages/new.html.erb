@@ -1,15 +1,21 @@
+<div class="instruction-text">
+<p>Write your secret code in the code box to change the picture.<br />
+The instructions in the code box will tell you what to type.<br />
+When you are happy with your message, click the Send button.
+</p>
+</div>
 <div id="editor">
   <%= @template.content %>
 </div>
 
 <div id="message-preview" class="template-<%= @template.id %>">
-
-<iframe id ="myframe" src="<%= template_path(@template.id) %>">
-</iframe>
-
+  <iframe id ="myframe" src="<%= template_path(@template.id) %>"></iframe>
 </div>
 
+<!--
 <%= link_to "test", templates_run_code_path, class: "update-iframe" %>
+-->
+
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 </script>
 <script>

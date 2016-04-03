@@ -1,15 +1,22 @@
+.instruction-text {
+  margin: 0 15px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
 #editor {
+  margin: 0 0 15px 15px;
+  padding: 0;
   float: left;
-  margin: 30px;
-  margin-top: 80px;
-  width: 40%;
+  width: 48%;
   height: 500px;
 }
 
 iframe {
+  margin: 0 15px 15px 0;
+  padding: 0;
   float: right;
-  margin: 30px;
-  width: 50%;
+  width: 48%;
   height: 500px;
-  border: 2px solid #ccc;
 }

@@ -2,7 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'McLaren', cursive;
-  color: #84A550;
+  min-width: 960px;
+  background-color: #1273AC;
 }
 
 li {
@@ -17,7 +18,7 @@ header {
   height: 100px;
   background: url("/assets/detective.png") no-repeat 20px 15px;
   background-color: #FFCB00;
-  border-bottom: 2px solid #F68A1D;
+  border-bottom: 3px solid #F68A1D;
 }
 
 header h1 {
