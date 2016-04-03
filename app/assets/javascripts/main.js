@@ -3,21 +3,20 @@ $( document).ready(function(){
     event.preventDefault();
     var dataTransfer = editor.getValue();
     dataTransfer = allReplace(dataTransfer);
-    // dataTransfer = divideReplace(dataTransfer);
     dataPackage = {data: dataTransfer}
-    debugger
     $.ajax({
       url: event.currentTarget.children[0].getAttribute('href'),
       data: dataPackage,
       method: "GET"
     }).done(function(response){
       if (response.trim() === "false"){
-        alert("na");
+        alert("Try again!");
       } else {
         $('.algorithm-container').append(response)
       }
     })
   });
+  setInterval(function(){ resetIframe(); }, 300);
 });
 
 var allReplace = function(str){
@@ -26,6 +25,13 @@ var allReplace = function(str){
   str = equalReplace(str);
   str = timesReplace(str);
   return str
+}
+
+var resetIframe = function(){
+  var current_editor_value = editor.getValue();
+  var iframe = document.getElementById("myframe");
+  iframe.contentWindow.document.open();
+  iframe.contentWindow.document.write(current_editor_value);
 }
 
 var plusReplace = function(str){

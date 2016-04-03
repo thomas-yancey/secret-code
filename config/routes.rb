@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'users/:id' => 'users#show'
   get '/algorithms/run_code', to: 'algorithms#run_code', as: 'run_code'
-
+  get '/messages/run_code', to: 'messages#run_code', as: 'templates_run_code'
   resources :welcome, only: [:index]
   resources :secrets
   resources :algorithms
