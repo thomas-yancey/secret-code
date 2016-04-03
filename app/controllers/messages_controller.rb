@@ -1,5 +1,9 @@
 class MessagesController < ApplicationController
 
+  def run_code
+    binding.pry
+  end
+
   def new
     @message = Message.new
     @template = Template.find_by(id: params[:template_id])
@@ -29,9 +33,12 @@ class MessagesController < ApplicationController
     end
   end
 
+
+
 private
 
   def message_params
     params.require(:message).permit(:content, :template_id)
   end
+
 end
