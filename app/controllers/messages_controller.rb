@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
   def run_code
-    binding.pry
+    # binding.pry
   end
 
   def new

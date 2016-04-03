@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: 'McLaren', cursive;
   color: #84A550;
 }
@@ -33,6 +34,8 @@ header h1 a:active {
 }
 
 nav {
+  margin: 0;
+  padding: 0;
   float: right;
 }
 
