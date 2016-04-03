@@ -16,7 +16,9 @@ $( document).ready(function(){
       }
     })
   });
-  setInterval(function(){ resetIframe(); }, 300);
+  if (document.getElementById("myframe")){
+    $('body').keyup(_.debounce( resetIframe, 150))
+  }
 });
 
 var allReplace = function(str){
