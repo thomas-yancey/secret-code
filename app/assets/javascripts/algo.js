@@ -18,6 +18,7 @@ $( document).ready(function(){
       }
     })
   });
+  setInterval(function(){ resetIframe(); }, 300);
 });
 
 var allReplace = function(str){
@@ -26,6 +27,13 @@ var allReplace = function(str){
   str = equalReplace(str);
   str = timesReplace(str);
   return str
+}
+
+var resetIframe = function(){
+  var current_editor_value = editor.getValue();
+  var iframe = document.getElementById("myframe");
+  iframe.contentWindow.document.open();
+  iframe.contentWindow.document.write(current_editor_value);
 }
 
 var plusReplace = function(str){
