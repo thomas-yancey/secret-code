@@ -93,3 +93,12 @@ nav a:active {
 
 }
 
+#modal-window {
+  position: fixed;
+  z-index: 1500 !important;
+}
+
+#myModalLabel {
+  color: #1273AC;
+}
+

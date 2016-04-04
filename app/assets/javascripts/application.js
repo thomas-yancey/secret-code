@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/modal
+//= require jquery-ui
+//= require jquery.modal
 //= require_tree .
 //= require ace-rails-ap
+

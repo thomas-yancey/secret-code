@@ -35,15 +35,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  def send_to_friends
-    @users = User.all
-    @message = Message.new(message_params)
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
 private
 
   def message_params

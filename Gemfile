@@ -53,6 +53,9 @@ group :test do
   gem 'rspec-activemodel-mocks'
 
 end
+
+  gem 'jquery-ui-rails'
+  gem 'jquery-modal-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 

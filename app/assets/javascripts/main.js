@@ -24,7 +24,7 @@ $( document).ready(function(){
     $('body').keyup(_.debounce( resetIframe, 150))
   }
 
-  $('#new-message').on('click', function(event){
+  $('#new_message').on('click', function(event){
   var that = this
   event.preventDefault();
     var dataTransfer = {message:{content: encodeURIComponent(editor.getValue()), template_id: 1}};
@@ -33,9 +33,8 @@ $( document).ready(function(){
       data: dataTransfer,
       type: "POST",
     }).done(function(response){
-      $(that).toggle();
-      $('body').append(response);
-
+      $('#modal-window').html(response);
+      $('#modal-window').modal();
     })
   });
 

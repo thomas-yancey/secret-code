@@ -18,10 +18,7 @@ When you are happy with your message, click the Send button.
   <%=f.submit%>
   <% end %>
 
-<%= link_to 'Create Message', new_message_path, {method: :post, :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',id:'new-message'}  %>
-
 <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-
 
 <script>
     var editor = ace.edit("editor");
