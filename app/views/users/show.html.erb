@@ -1,33 +1,46 @@
+<main class="clearfix">
 <%if current_user_profile?(@user)%>
+
+<div class="user-friends">
+<div class="create-link">
+  <%=link_to "Create a Secret Message!", templates_path%>
+</div>
+
+<h3>Friend Requests</h3>
+<ul>
+<% @user.requested_friendships.each do |request| %>
+<li><%=request.email %></li>
+<li><%= link_to "Accept Request", friendship_path(id: request), method: "put" %></li>
+<li><%= link_to "Decline Request", friendship_path(id: request), method: :delete %></li>
+<% end %>
+</ul>
+
 <h3>Friends</h3>
 <ul>
   <% @user.friends.each do |friend| %>
-  <li>
-    <%=friend.email%>
+    <li><%=friend.email%>
     <% if current_user_profile?(@user) %>
-      <%= link_to "Remove", friendship_path(id: friend), method: :delete %>
-    <% end %>
-  </li>
-  <% end %>
+    <%= link_to "Remove", friendship_path(id: friend), method: :delete %>
+<% end %>
+</li>
+<% end %>
 </ul>
-  <h4>Friend Requests</h4>
-  <ul>
-    <% @user.requested_friendships.each do |request| %>
-    <li>
-      <%=request.email %>
-      <%= link_to "Accept Request", friendship_path(id: request), method: "put" %>
-      <%= link_to "Decline Request", friendship_path(id: request), method: :delete %>
-    </li>
-    <% end %>
-  </ul>
-  <h2>Received Messages</h2>
+
+</div>
+
+<div class="user-messages">
+<h3>Received Messages</h3>
   <%= render @user.received_messages %>
 
-  <h2>Sent Messages</h2>
+<h3>Sent Messages</h3>
   <%= render @user.sent_messages %>
-  <%=link_to "Start a Secret Message!", templates_path%>
+</div>
+
 <% else %>
-  <% unless current_user == @user %>
-    <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
-  <% end %>
+  <div class="add-friend">
+    <% unless current_user == @user %>
+      <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
+    <% end %>
+  </div>
 <% end %>
+</main>
