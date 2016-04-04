@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160403175453) do
 
   create_table "messages", force: true do |t|
     t.integer  "template_id", null: false
-    t.string   "content",     null: false
+    t.text     "content",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
