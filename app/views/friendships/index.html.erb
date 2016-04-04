@@ -1,0 +1,11 @@
+<% if @curr_friend_requests %>
+  <% @curr_friend_requests.each do |pending| %>
+    <%= render partial: "friendships/pending_friend", locals: {pending: pending} %>
+  <% end %>
+<% end %>
+
+<% if @curr_friend_requests %>
+  <% @not_yet_requested.each do |user| %>
+    <%= render partial: "friendships/add_friend", locals: {user: user} %>
+  <% end %>
+<% end %>
