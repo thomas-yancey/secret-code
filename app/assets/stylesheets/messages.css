@@ -13,11 +13,14 @@
   height: 500px;
 }
 
-
 iframe {
   margin: 0 15px 15px 0;
   padding: 0;
   float: right;
   width: 48%;
   height: 500px;
+}
+
+.yellow-text {
+  color: #FFCB00;
 }
