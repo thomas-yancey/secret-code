@@ -19,25 +19,6 @@ describe Algorithm do
                    casetests: "1,1 2,2 4,3 5,5",
                    caseanswers: "2 4 7 10")}
 
-    context "converting_symbols_to_operators" do
-      it "should convert the ™ symbol on the back end" do
-        expect(Algorithm.convert_operators("™")).to eq("+")
-      end
-
-      it "should convert the ¡ symbol on the back end" do
-        expect(Algorithm.convert_operators("¡")).to eq("-")
-      end
-
-      it "should convert the £ symbol on the back end" do
-        expect(Algorithm.convert_operators("£")).to eq("=")
-      end
-
-      it "should convert the • symbol on the back end" do
-        expect(Algorithm.convert_operators("•")).to eq("*")
-      end
-
-    end
-
     context "casetests_to_array" do
       it "should split casetests into appropriate nested arrays" do
         casetests = algorithm.casetests_to_array

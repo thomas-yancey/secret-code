@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
 private
 
   def message_params
-    Algorithm.convert_operators(params[:message][:content])
+    params[:message][:content] = URI.unescape(params[:message][:content])
     params.require(:message).permit(:content, :template_id)
   end
 
