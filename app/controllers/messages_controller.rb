@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     if @message.save
       if request.xhr?
         @users = User.all
-        render "users/index", locals: {user: @users, message_id: @message.id}, layout: false
+        render "users/_index", locals: {user: @users, message_id: @message.id}, layout: false
       end
     else
       flash.now[:errors]="Oops! Looks like you made a mistake!"
@@ -35,7 +35,14 @@ class MessagesController < ApplicationController
     end
   end
 
-
+  def send_to_friends
+    @users = User.all
+    @message = Message.new(message_params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
 private
 

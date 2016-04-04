@@ -1,0 +1,9 @@
+
+<div class = "modal-header">
+  <h3 id="myModalLabel">Choose a friend to send your message to</h3>
+</div>
+<div class="modal-body">
+  <% @users.each do |user| %>
+  <section><%=link_to user.username, secrets_path(receiver_id: user.id, message_id: @message.id), method: :create %></section>
+<% end %>
+</div>

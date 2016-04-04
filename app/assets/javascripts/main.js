@@ -24,7 +24,7 @@ $( document).ready(function(){
     $('body').keyup(_.debounce( resetIframe, 150))
   }
 
-  $('#new_message').on('click', function(event){
+  $('#new-message').on('click', function(event){
   var that = this
   event.preventDefault();
     var dataTransfer = {message:{content: encodeURIComponent(editor.getValue()), template_id: 1}};
