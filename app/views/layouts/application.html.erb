@@ -3,6 +3,7 @@
 <head>
   <title>SecretCode</title>
   <link href='https://fonts.googleapis.com/css?family=McLaren' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all'  %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -21,8 +22,8 @@
       </ul>
     <% else %>
        <ul>
-          <li> <%= link_to 'Login', new_user_session_path %></li>
-          <li> <%= link_to 'Signup', new_user_registration_path %></li>
+          <li> <%= link_to 'login', new_user_session_path %></li>
+          <li> <%= link_to 'signup', new_user_registration_path %></li>
         </ul>
    <% end %>
  </nav>
