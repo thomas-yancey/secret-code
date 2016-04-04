@@ -25,15 +25,20 @@ $( document).ready(function(){
   }
   $('#new_message').on('click', function(event){
   console.log("blocked");
+  var that = this
+  event.preventDefault();
     var dataTransfer = editor.getValue();
     dataTransfer = allReplace(dataTransfer);
-    dataPackage = {data: dataTransfer};
+    dataPackage = {message:{content: dataTransfer, template_id: 1}};
     $.ajax({
       url: event.currentTarget.action,
       data: dataPackage,
       type: "POST",
     }).done(function(response){
-      debugger;
+      console.log(that);
+      $(that).toggle();
+      $('body').append(response);
+
     })
   });
 });
