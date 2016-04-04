@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe User do
+  before (:each) do
+    @user = FactoryGirl.create(:user)
+  end
+
   context "validations" do
     it { should validate_presence_of :email }
     it { should validate_presence_of :username }
@@ -25,8 +29,17 @@ describe User do
   context "methods" do
     context "friends" do
       it "should return the list of friends and pending friend requests" do
-        user = User.create(username: "jon", email: "jon@gmail.com", password: "password", password_confirmation: "password")
-        expect(user).to respond_to(:friends)
+        expect(@user).to respond_to(:friends)
+      end
+
+      it "should return current friends and pending requests" do
+        expect(@user.friends).to match_array([])
+      end
+    end
+
+    context "not_requested" do
+      it "should return the users that are not friends with the current user" do
+        expect(@user.not_requested).to be_an_instance_of(Array)
       end
     end
   end

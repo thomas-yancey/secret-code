@@ -19,6 +19,22 @@ FactoryGirl.define do
     casetests "1,1 2,2 4,3 5,5"
     caseanswers "2 4 7 10"
   end
+
+  factory :message do
+    association :template, factory: :template
+    content "Hello world"
+  end
+
+  factory :template do
+    title "stuff"
+    preview_url "things"
+    content "<head>
+    <title></title>
+  </head>
+  <body>
+    <p>Fake Template3</p>
+  </body>"
+  end
 end
 
 

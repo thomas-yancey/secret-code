@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'users/:id' => 'users#show'
   get '/algorithms/run_code', to: 'algorithms#run_code', as: 'run_code'
-  get "/users", to: 'messages#send_to_friends', as: 'send_to_friends'
 
   resources :welcome, only: [:index]
   resources :secrets

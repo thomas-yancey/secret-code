@@ -11,10 +11,21 @@ let(:user) {FactoryGirl.create :user}
     it "redirects to the users show page" do
       receiver = FactoryGirl.create(:user)
       algorithm = FactoryGirl.create(:algorithm)
-      params = FactoryGirl.attributes_for(:secret).merge(receiver_id: receiver.id, algorithm_id: algorithm.id)
+      message = FactoryGirl.create(:message)
+      params = FactoryGirl.attributes_for(:secret).merge(receiver_id: receiver.id, algorithm_id: algorithm.id, sender_id: user.id, message_id: message.id)
       post :create, params
       expect(response).to redirect_to(user_path(user))
     end
+
+    it "redirects to the secrets page if you mess up" do
+      request.env["HTTP_REFERER"] = secrets_path
+
+      receiver = FactoryGirl.create(:user)
+      params = FactoryGirl.attributes_for(:secret).merge(receiver_id: receiver.id)
+      post :create, params
+      expect(response).to redirect_to(request.env["HTTP_REFERER"])
+    end
+
   end
 
 end
