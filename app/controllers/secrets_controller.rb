@@ -24,9 +24,9 @@ class SecretsController < ApplicationController
   private
 
   def secret_params
-    @algorithms = Algorithm.all
-    @algorithm = @algorithms.sample
-    params.permit(:receiver_id, :message_id).merge(sender: current_user, algorithm: @algorithm)
+    algorithms = Algorithm.all
+    algorithm = algorithms.sample
+    params.permit(:receiver_id, :message_id).merge(sender: current_user, algorithm: algorithm)
   end
 
 end
