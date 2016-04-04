@@ -1,5 +1,8 @@
 <main>
 <%if current_user_profile?(@user)%>
+  <%=link_to "Create a Secret Message!", templates_path%>
+
+
 <h3>Friends</h3>
 <ul>
   <% @user.friends.each do |friend| %>
@@ -11,7 +14,8 @@
   </li>
   <% end %>
 </ul>
-  <h4>Friend Requests</h4>
+
+  <h3>Friend Requests</h3>
   <ul>
     <% @user.requested_friendships.each do |request| %>
     <li>
@@ -26,7 +30,7 @@
 
   <h2>Sent Messages</h2>
   <%= render @user.sent_messages %>
-  <%=link_to "Start a Secret Message!", templates_path%>
+
 <% else %>
   <% unless current_user == @user %>
     <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
