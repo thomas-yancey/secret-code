@@ -1,9 +1,12 @@
+/* General Styles */
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'McLaren', cursive;
   min-width: 960px;
   background-color: #1273AC;
+  color: #fff;
 }
 
 li {
@@ -13,6 +16,15 @@ li {
 a {
   text-decoration: none;
 }
+
+a:link, a:visited {
+  color: #638049;
+}
+a:hover, a:active {
+  color: #F68A1D;
+}
+
+/* Header Styles */
 
 header {
   height: 100px;
@@ -38,6 +50,7 @@ nav {
   margin: 0;
   padding: 0;
   float: right;
+  color: #FF0000;
 }
 
 nav li {
@@ -45,11 +58,21 @@ nav li {
   padding: 0 1rem;
 }
 
-/* Ace editor styles */
+nav a:link,
+nav a:visited {
+  color: #1273AC;
+}
+
+nav a:hover,
+nav a:active {
+  color: #FF0000;
+}
+
+/* Ace Editor Styles */
 
 #editor {
   font-family: 'Source Code Pro', monospace;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .ace_comment {
@@ -69,3 +92,4 @@ nav li {
 .ace_support.ace_type {
 
 }
+
