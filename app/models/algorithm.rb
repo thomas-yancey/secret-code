@@ -8,14 +8,6 @@ class Algorithm < ActiveRecord::Base
     }
   end
 
-  def self.convert_operators(str)
-    str.gsub!("™", "+")
-    str.gsub!("¡", "-")
-    str.gsub!("£", "=")
-    str.gsub!("•", "*")
-    return str
-  end
-
   def casetests_to_array
     split_on_white = self.casetests.split(" ")
     split_casetests = split_on_white.map do |params|

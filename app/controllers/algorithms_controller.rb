@@ -33,8 +33,7 @@ class AlgorithmsController < ApplicationController
 
     @secret = Secret.find_by(id: params[:secret_id])
     @algorithm = Algorithm.find_by(id:params[:algorithm_id])
-    Algorithm.convert_operators(params[:data])
-    user_method = eval(params[:data])
+    user_method = eval(URI.unescape(params[:data]))
     array_of_answers = @algorithm.caseanswers_to_array
     array_of_inputs = @algorithm.casetests_to_array
 
