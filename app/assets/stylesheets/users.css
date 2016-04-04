@@ -1,1 +1,29 @@
 /* User Page */
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+main.user-show {
+  height: auto;
+}
+.user-friends{
+float: left;
+height: 600px;
+}
+.user-messages {
+float: right;
+height: 600px;
+}
+
+.create-link a {
+  height: 20px;
+  background-color: yellow;
+}
+
+.create-link a {
+  font-size: 1.25rem;
+  color: #FF0000;
+}
