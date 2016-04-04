@@ -1,4 +1,0 @@
-<h2> Choose a friend to send your message to</h2>
-<% @users.each do |user| %>
-  <section><%=link_to user.username, secrets_path(receiver_id: user.id, message_id: @message.id), method: :create %></section>
-<% end %>

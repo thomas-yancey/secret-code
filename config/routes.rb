@@ -4,15 +4,16 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'users/:id' => 'users#show'
   get '/algorithms/run_code', to: 'algorithms#run_code', as: 'run_code'
-  get '/messages/run_code', to: 'messages#run_code', as: 'templates_run_code'
+  get "/users", to: 'messages#send_to_friends', as: 'send_to_friends'
+
   resources :welcome, only: [:index]
   resources :secrets
   resources :algorithms
-  get 'algorithms#update' => 'algorithms#answer'
   resources :messages
   resources :templates, only:[:index, :show]
   resources :users, only:[:index, :show]
-  resources :friendships, only: [:create, :update, :destroy]
+
+  resources :friendships, only: [:create, :update, :destroy, :index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"

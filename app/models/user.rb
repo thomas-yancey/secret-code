@@ -26,4 +26,11 @@ class User < ActiveRecord::Base
     active_friends | passive_friends
   end
 
+  def not_requested
+    missing = User.pluck(:id).select do |friend_id|
+      User.find(friend_id) if Friendship.find_by(user_id: self.id, friend_id: friend_id) == nil
+    end
+    missing
+  end
+
 end

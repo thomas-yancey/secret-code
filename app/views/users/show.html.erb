@@ -14,7 +14,6 @@
 <li><%= link_to "Decline Request", friendship_path(id: request), method: :delete %></li>
 <% end %>
 </ul>
-
 <h3>Friends</h3>
 <ul>
   <% @user.friends.each do |friend| %>
@@ -25,15 +24,16 @@
 </li>
 <% end %>
 </ul>
-
 </div>
 
 <div class="user-messages">
 <h3>Received Messages</h3>
-  <%= render @user.received_messages %>
+<%= render @user.received_messages %>
 
 <h3>Sent Messages</h3>
   <%= render @user.sent_messages %>
+  <%=link_to "Start a Secret Message!", templates_path%>
+  <%=link_to "Add friends", friendships_path %>
 </div>
 
 <% else %>

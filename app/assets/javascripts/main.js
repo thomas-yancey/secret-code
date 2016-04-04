@@ -33,9 +33,8 @@ $( document).ready(function(){
       data: dataTransfer,
       type: "POST",
     }).done(function(response){
-      $(that).toggle();
-      $('body').append(response);
-
+      $('#modal-window').html(response);
+      $('#modal-window').modal();
     })
   });
 
