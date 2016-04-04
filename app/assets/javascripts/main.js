@@ -10,9 +10,11 @@ $( document).ready(function(){
       data: dataPackage,
       method: "GET"
     }).done(function(response){
-      if (response.trim() === "true"){
+      debugger
+      if (response.match("Your message!")){
         $('.algorithm-container').append(response)
       } else {
+        debugger;
         $('#mistakes').append("<ul>Failing test cases</ul>");
         for (e of response.trim().split("|")){
           $('#mistakes').append("<li>" + e + "</li>");
