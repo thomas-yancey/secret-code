@@ -18,7 +18,9 @@ Template.create(title: "Fake Template 1",
   </body>")
 Template.create(title: "Space",
   preview_url: "assets/template-previews/space-preview.png",
-  content: "<head>
+  content: "
+<html>
+<head>
 
 <!--   In this section you can change colors and sizes!  -->
 
