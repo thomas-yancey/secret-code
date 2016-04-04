@@ -1,7 +1,7 @@
 <div class="instruction-text">
 <p>Write your secret code in the code box to change the picture.<br />
-The instructions in the code box will tell you what to type.<br />
-When you are happy with your message, click the Send button.
+The instructions in <span class="yellow-text">yellow</span> will tell you what to change.<br />
+When you are done, click the Create Message button below.
 </p>
 </div>
 
@@ -13,11 +13,12 @@ When you are happy with your message, click the Send button.
   <iframe id ="myframe" src="<%= template_path(@template.id) %>"></iframe>
 </div>
 
- <%= form_for(@message) do |f| %>
-
+<div class="create-message-button">
+<%= form_for(@message) do |f| %>
   <%=f.hidden_field :template_id, value: @template.id %>
   <%=f.submit%>
-  <% end %>
+<% end %>
+</div>
 
 <script>
     var editor = ace.edit("editor");
