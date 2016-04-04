@@ -40,11 +40,11 @@ gem 'normalize-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1.1'
-  gem 'factory_girl_rails', :require => false
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
