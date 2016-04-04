@@ -52,6 +52,11 @@ class AlgorithmsController < ApplicationController
         end
       end
     end
+
+    if incorrect_answers.empty?
+      @secret.update_attributes(solved: true)
+    end
+
     render 'algorithms/_run_code', locals: {answer: incorrect_answers}, layout: false
   end
 
