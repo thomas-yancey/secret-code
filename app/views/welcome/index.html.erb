@@ -1,5 +1,5 @@
 <main>
 <h2>Welcome to SecretCode!</h2>
 <p>At SecretCode, you can create secret messages for your friends using REAL computer code!</p>
-<h3>Please Login or Signup to get started!</h3>
+<h3>Please <%= link_to 'login', new_user_session_path %> or <%= link_to 'signup', new_user_registration_path %> to get started!</h3>
 </main>

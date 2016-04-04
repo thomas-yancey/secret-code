@@ -44,3 +44,28 @@ nav li {
   display: inline-block;
   padding: 0 1rem;
 }
+
+/* Ace editor styles */
+
+#editor {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1.2rem;
+}
+
+.ace_comment {
+  color: #FFCB00 !important;
+}
+
+/* de-emphasizes image links */
+.ace_image, .ace_image ~ span {
+  color: #666 !important;
+}
+
+/* styles open and closing tags / braces / head, body, style tags */
+.ace_punctuation, .ace_paren, .ace_tag-name, .ace_style {
+  color: #666 !important;
+}
+
+.ace_support.ace_type {
+
+}
