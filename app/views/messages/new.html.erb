@@ -12,12 +12,13 @@ When you are happy with your message, click the Send button.
 <div id="message-preview" class="template-<%= @template.id %>">
   <iframe id ="myframe" src="<%= template_path(@template.id) %>"></iframe>
 </div>
-
- <%= form_for(@message) do |f| %>
+  <%= form_for(@message) do |f| %>
 
   <%=f.hidden_field :template_id, value: @template.id %>
   <%=f.submit%>
   <% end %>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <script>
     var editor = ace.edit("editor");

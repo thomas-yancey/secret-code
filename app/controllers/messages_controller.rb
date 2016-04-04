@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     if @message.save
       if request.xhr?
         @users = User.all
-        render "users/index", locals: {user: @users, message_id: @message.id}, layout: false
+        render "users/_index", locals: {user: @users, message_id: @message.id}, layout: false
       end
     else
       flash.now[:errors]="Oops! Looks like you made a mistake!"
@@ -34,8 +34,6 @@ class MessagesController < ApplicationController
       redirect_to root_path
     end
   end
-
-
 
 private
 
