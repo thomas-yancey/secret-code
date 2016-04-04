@@ -10,9 +10,11 @@ $( document).ready(function(){
       data: dataPackage,
       method: "GET"
     }).done(function(response){
-      if (response.trim() === "true"){
+      debugger
+      if (response.match("Your message!")){
         $('.algorithm-container').append(response)
       } else {
+        debugger;
         $('#mistakes').append("<ul>Failing test cases</ul>");
         for (e of response.trim().split("|")){
           $('#mistakes').append("<li>" + e + "</li>");
@@ -25,15 +27,20 @@ $( document).ready(function(){
   }
   $('#new_message').on('click', function(event){
   console.log("blocked");
+  var that = this
+  event.preventDefault();
     var dataTransfer = editor.getValue();
     dataTransfer = allReplace(dataTransfer);
-    dataPackage = {data: dataTransfer};
+    dataPackage = {message:{content: dataTransfer, template_id: 1}};
     $.ajax({
       url: event.currentTarget.action,
       data: dataPackage,
       type: "POST",
     }).done(function(response){
-      debugger;
+      console.log(that);
+      $(that).toggle();
+      $('body').append(response);
+
     })
   });
 });

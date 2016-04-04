@@ -13,23 +13,12 @@ When you are happy with your message, click the Send button.
   <iframe id ="myframe" src="<%= template_path(@template.id) %>"></iframe>
 </div>
 
-<% @param = capture do %>
-<%= javascript_tag do %>
-     getContent();
-<% end %>
-<% end %>
  <%= form_for(@message) do |f| %>
 
   <%=f.hidden_field :template_id, value: @template.id %>
-  <%=f.hidden_field :content, value: @param %>
   <%=f.submit%>
   <% end %>
 
-<!--
-<%= link_to "test", templates_run_code_path, class: "update-iframe" %>
--->
-
-<script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
