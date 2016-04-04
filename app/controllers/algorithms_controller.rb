@@ -55,7 +55,6 @@ class AlgorithmsController < ApplicationController
 
     if incorrect_answers.empty?
       @secret.update_attributes(solved: true)
-      # redirect_to @secret.message
     end
 
     render 'algorithms/_run_code', locals: {answer: incorrect_answers}, layout: false
