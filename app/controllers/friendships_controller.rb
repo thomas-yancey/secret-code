@@ -29,7 +29,6 @@ class FriendshipsController < ApplicationController
   end
 
   def index
-    binding.pry
     curr_friend_ids = Friendship.current_friend_ids(current_user)
     curr_friend_request_ids = Friendship.current_friend_request_ids(current_user)
     @curr_friends = User.where(id: curr_friend_ids)
