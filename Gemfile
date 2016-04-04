@@ -20,6 +20,7 @@ gem 'simplecov', :require => false, :group => :test
 gem 'faker'
 
 gem 'devise'
+gem 'bootstrap-sass'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -40,11 +41,11 @@ gem 'normalize-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1.1'
-  gem 'factory_girl_rails', :require => false
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
@@ -52,6 +53,9 @@ group :test do
   gem 'rspec-activemodel-mocks'
 
 end
+
+  gem 'jquery-ui-rails'
+  gem 'jquery-modal-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 

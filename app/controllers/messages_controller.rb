@@ -11,7 +11,10 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
-      redirect_to users_path(message_id: @message.id)
+      if request.xhr?
+        @users = User.all
+        render "users/_index", locals: {user: @users, message_id: @message.id}, layout: false
+      end
     else
       flash.now[:errors]="Oops! Looks like you made a mistake!"
       redirect_to :back
@@ -32,11 +35,10 @@ class MessagesController < ApplicationController
     end
   end
 
-
-
 private
 
   def message_params
+    params[:message][:content] = URI.unescape(params[:message][:content])
     params.require(:message).permit(:content, :template_id)
   end
 
