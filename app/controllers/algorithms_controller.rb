@@ -37,19 +37,22 @@ class AlgorithmsController < ApplicationController
     array_of_answers = @algorithm.caseanswers_to_array
     array_of_inputs = @algorithm.casetests_to_array
 
+
     incorrect_answers = []
 
     array_of_inputs.each_with_index do |inputs,idx|
-
-      begin
-        method(user_method).call(inputs[0],inputs[1])
-      rescue
-        incorrect_answers << [inputs[0],inputs[1]]
-      else
-        if method(user_method).call(inputs[0],inputs[1]) != array_of_answers[idx]
+      proc {
+        $SAFE = 3
+        begin
+          method(user_method).call(inputs[0],inputs[1])
+        rescue
           incorrect_answers << [inputs[0],inputs[1]]
+        else
+          if method(user_method).call(inputs[0],inputs[1]) != array_of_answers[idx]
+            incorrect_answers << [inputs[0],inputs[1]]
+          end
         end
-      end
+      }.call
     end
 
     if incorrect_answers.empty?
