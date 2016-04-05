@@ -25,7 +25,6 @@ $( document).ready(function(){
   }
 
   $('#new_message').on('click', function(event){
-  var that = this
   event.preventDefault();
     var dataTransfer = {message:{content: encodeURIComponent(editor.getValue()), template_id: 1}};
     $.ajax({
@@ -37,6 +36,38 @@ $( document).ready(function(){
       $('#modal-window').modal();
     })
   });
+
+  $('.received-messages-button').on('click', function(event){
+    console.log('pressed');
+      $('<div id="dialog-form">Received Messages</div>').dialog({
+        autoOpen: true,
+        width: 520,
+        modal: true,
+        open: function() {
+            // $(this).clone().append($('.received-messages').show());
+            $('.received-messages').clone().appendTo($(this)).show();
+        },
+        close: function() {
+          $('.ui-dialog').remove()
+        }
+    });
+  })
+
+    $('.sent-messages-button').on('click', function(event){
+    console.log('pressed');
+      $('<div id="dialog-form">Sent Messages</div>').dialog({
+        autoOpen: true,
+        width: 520,
+        modal: true,
+        open: function() {
+            // $(this).clone().append($('.received-messages').show());
+            $('.sent-messages').clone().appendTo($(this)).show();
+        },
+        close: function() {
+          $('.ui-dialog').remove()
+        }
+    });
+  })
 
 });
 
