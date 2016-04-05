@@ -1,4 +1,19 @@
 class AlgorithmsController < ApplicationController
+  SUPER_EXPRESSION = /\s*def(.|\n)*?end\s*/
+  def update
+    answer = params[:algorithm][:answer]
+    algorithm = Algorithm.find_by(id: params[:id])
+    if algorithm.answer == answer
+      flash[:notice] = "Good work! Here's your message..."
+      secret = Secret.find_by(id: params[:algorithm][:secret_id])
+      secret.solved = true
+      secret.save
+      redirect_to secret.message
+    else
+      flash[:notice] = "That was incorrect!"
+      redirect_to :back
+    end
+  end
 
   def show
     @secret = Secret.find_by(id: params[:secret_id])
@@ -7,8 +22,13 @@ class AlgorithmsController < ApplicationController
 
   def run_code
     @secret = Secret.find_by(id: params[:secret_id])
-    @algorithm = Algorithm.find_by(id: params[:algorithm_id])
-    user_method = eval(URI.unescape(params[:data]))
+    @algorithm = Algorithm.find_by(id:params[:algorithm_id])
+    user_method = ""
+    if URI.unescape(params[:data]).match(SUPER_EXPRESSION) == nil
+      user_method = ""
+    else
+      user_method = eval(URI.unescape(params[:data]))
+    end
     array_of_answers = @algorithm.caseanswers_to_array
     array_of_inputs = @algorithm.casetests_to_array
 
