@@ -11,9 +11,10 @@ describe FriendshipsController do
 
   context "#create" do
     it "creates a friend request" do
+      request.env["HTTP_REFERER"] = friendships_path
       params = FactoryGirl.attributes_for(:friendship).merge(friend_id: user_2.id, user_id: user.id)
       post :create, friendship: params
-      expect(response).to redirect_to(friendships_path)
+      expect(response).to redirect_to(request.env["HTTP_REFERER"])
     end
   end
 
