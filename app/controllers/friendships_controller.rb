@@ -2,7 +2,6 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friends_params)
     if friends_params[:user].id != friends_params[:friend_id] && @friendship.save
-      binding.pry
       flash[:notice] = "Friend request sent!"
       redirect_to :back
     else

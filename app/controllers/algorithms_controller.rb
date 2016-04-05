@@ -20,16 +20,7 @@ class AlgorithmsController < ApplicationController
     @algorithm = Algorithm.find(params[:id])
   end
 
-  def create
-    redirect_to :back
-  end
-
-  def index
-    redirect_to :back
-  end
-
   def run_code
-
     @secret = Secret.find_by(id: params[:secret_id])
     @algorithm = Algorithm.find_by(id:params[:algorithm_id])
     user_method = ""
@@ -40,7 +31,6 @@ class AlgorithmsController < ApplicationController
     end
     array_of_answers = @algorithm.caseanswers_to_array
     array_of_inputs = @algorithm.casetests_to_array
-
 
     incorrect_answers = []
 
@@ -58,7 +48,6 @@ class AlgorithmsController < ApplicationController
         end
       }.call
     end
-
     if incorrect_answers.empty?
       @secret.update_attributes(solved: true)
     end
