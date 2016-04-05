@@ -44,7 +44,6 @@ $( document).ready(function(){
         width: 520,
         modal: true,
         open: function() {
-            // $(this).clone().append($('.received-messages').show());
             $('.received-messages').clone().appendTo($(this)).show();
         },
         close: function() {
@@ -60,7 +59,6 @@ $( document).ready(function(){
         width: 520,
         modal: true,
         open: function() {
-            // $(this).clone().append($('.received-messages').show());
             $('.sent-messages').clone().appendTo($(this)).show();
         },
         close: function() {
