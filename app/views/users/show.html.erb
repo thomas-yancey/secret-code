@@ -27,11 +27,11 @@
 </div>
 
 <div class="user-messages">
-<h3>Received Messages</h3>
-<%= render @user.received_messages %>
+<h3 class="received-messages-button">Received Messages</h3>
+<div class="received-messages"><%= render @user.received_messages %></div>
 
-<h3>Sent Messages</h3>
-  <%= render @user.sent_messages %>
+<h3 class="sent-messages-button">Sent Messages</h3>
+<div class="sent-messages"><%= render @user.sent_messages %></div>
   <%=link_to "Start a Secret Message!", templates_path%>
   <%=link_to "Add friends", friendships_path %>
 </div>

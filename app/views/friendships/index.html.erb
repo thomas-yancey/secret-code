@@ -6,6 +6,9 @@
 
 <% if @curr_friend_requests %>
   <% @not_yet_requested.each do |user| %>
-    <%= render partial: "friendships/add_friend", locals: {user: user} %>
+    <% if current_user == user %>
+    <% else %>
+      <%= render partial: "friendships/add_friend", locals: {user: user} %>
+    <% end %>
   <% end %>
 <% end %>
