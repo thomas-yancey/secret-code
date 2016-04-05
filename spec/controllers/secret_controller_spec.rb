@@ -4,12 +4,12 @@ describe SecretsController do
 
 
   before (:each) do
-      @user = FactoryGirl.create(:user)
-      sign_in @user
-      @receiver = FactoryGirl.create(:user)
-      @algorithm = FactoryGirl.create(:algorithm)
-      @message = FactoryGirl.create(:message)
-      @secret = FactoryGirl.create(:secret)
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+    @receiver = FactoryGirl.create(:user)
+    @algorithm = FactoryGirl.create(:algorithm)
+    @message = FactoryGirl.create(:message)
+    @secret = FactoryGirl.create(:secret)
   end
 
   after(:each) do

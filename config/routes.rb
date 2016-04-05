@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :welcome, only: [:index]
   resources :secrets, only: [:create, :show]
-  resources :algorithms, only: [:update, :show]
+  resources :algorithms, only: [:show]
   resources :messages, only: [:new, :create, :show]
   resources :templates, only:[:index, :show]
   resources :users, only: [:index, :show]
