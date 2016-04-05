@@ -11,6 +11,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require "bundler/setup"
 require "factory_girl_rails"
+require "database_cleaner"
 require 'support/controller_helpers'
 
 
@@ -47,9 +48,6 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
     config.include Devise::TestHelpers, :type => :controller
     config.include ControllerHelpers, :type => :controller
-    config.include Capybara::DSL
-    config.mock_with :rspec
-
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -79,7 +77,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-    config.before(:suite) do
+  config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
@@ -88,11 +86,11 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
+config.before(:each) do
+  DatabaseCleaner.start
+end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
+config.after(:each) do
+  DatabaseCleaner.clean
+end
 end

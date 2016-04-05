@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
  helper_method :current_user_profile?
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  
  protected
 
  def configure_permitted_parameters

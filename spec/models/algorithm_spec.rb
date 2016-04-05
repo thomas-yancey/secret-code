@@ -18,7 +18,7 @@ describe Algorithm do
                    method_outline: "def add(a,b)\n # your code here\nend",
                    casetests: "1,1 2,2 4,3 5,5",
                    caseanswers: "2 4 7 10")}
-
+    
     context "casetests_to_array" do
       it "should split casetests into appropriate nested arrays" do
         casetests = algorithm.casetests_to_array
