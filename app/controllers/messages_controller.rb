@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def run_code
   end
 
@@ -14,6 +16,9 @@ class MessagesController < ApplicationController
       if request.xhr?
         @users = User.all
         render "users/_index", locals: {user: @users, message_id: @message.id}, layout: false
+      else
+        @users = User.all
+        redirect_to users_path
       end
     else
       flash.now[:errors]="Oops! Looks like you made a mistake!"
