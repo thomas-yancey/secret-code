@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   has_many :received_messages, foreign_key: :receiver_id, class_name: "Secret"
   has_many :sent_messages, foreign_key: :sender_id, class_name: "Secret"
 
-  has_many :relationships, foreign_key: :friender_id, dependent: :destroy
-
   has_many :secrets, foreign_key: :sender_id
   has_many :messages, through: :secrets
 

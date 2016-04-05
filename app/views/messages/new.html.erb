@@ -15,7 +15,6 @@ When you are done, click the Create Message button below.
 
 <div class="create-message-button">
 <%= form_for(@message) do |f| %>
-  <%= form_for(@message) do |f| %>
   <%=f.hidden_field :template_id, value: @template.id %>
   <%=f.submit%>
 <% end %>

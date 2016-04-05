@@ -9,7 +9,8 @@ FactoryGirl.define do
   factory :secret do
     association :sender, factory: :user
     association :receiver, factory: :user
-    message_id 3
+    association :message, factory: :message
+    association :algorithm, factory: :algorithm
     solved false
   end
 
