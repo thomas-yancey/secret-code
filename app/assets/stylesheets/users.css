@@ -27,3 +27,31 @@ height: 600px;
   font-size: 1.25rem;
   color: #FF0000;
 }
+
+.received-messages-button,
+.sent-messages-button {
+  color: #638049;
+}
+
+.received-messages-button:hover,
+.sent-messages-button:hover {
+  color: #F68A1D;
+  cursor: pointer;
+}
+
+.message-list a:link,
+.message-list a:visited {
+  color: #638049;
+}
+.message-list a:hover,
+.message-list a:active {
+  color: #F68A1D;
+}
+
+.received-messages{
+  display:none;
+}
+
+.sent-messages {
+  display:none;
+}
