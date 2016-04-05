@@ -3,7 +3,7 @@ class SecretsController < ApplicationController
 
   def create
     secret = Secret.new(secret_params)
-    if secret.save
+    if current_user.id != secret_params[:receiver_id] && secret.save
       flash[:notice] = "Your secret was sent! Shhhhhh..."
       redirect_to current_user
     else
