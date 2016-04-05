@@ -23,7 +23,6 @@ let(:user) {FactoryGirl.create :user}
 
     it "redirects to the secrets page if you mess up" do
       request.env["HTTP_REFERER"] = secrets_path
-
       receiver = FactoryGirl.create(:user)
       params = FactoryGirl.attributes_for(:secret).merge(receiver_id: receiver.id)
       post :create, params
@@ -37,7 +36,15 @@ let(:user) {FactoryGirl.create :user}
       secret = FactoryGirl.create(:secret)
       secret.solved = true
       secret.save!
-      expect(response).to redirect_to("/messages/#{secret.message_id}")
+      get :show, id: secret.message_id
+      expect(assigns(:secret)).to redirect_to(message_path)
+    end
+
+    it "redirects to the algorithm if the secret message is not solved" do
+      secret = FactoryGirl.create(:secret)
+      params = FactoryGirl.attributes_for(:algorithm).merge(secret_id: secret.id)
+      get :show, id: params[:secret_id]
+      expect(response).to redirect_to("/algorithms/#{secret.algorithm.id}?secret_id=#{secret.id}")
     end
   end
 
