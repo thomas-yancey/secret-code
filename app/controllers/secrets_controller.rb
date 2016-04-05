@@ -14,6 +14,7 @@ class SecretsController < ApplicationController
 
   def show
     @secret = Secret.find_by(id: params[:id])
+    binding.pry
     if @secret.solved
       @message = @secret.message
       redirect_to @message

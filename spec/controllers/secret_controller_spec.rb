@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 describe SecretsController do
-let(:user) {FactoryGirl.create :user}
+  let(:user){FactoryGirl.create :user}
+  let(:receiver){FactoryGirl.create :user}
+  let(:algorithm){FactoryGirl.create :algorithm}
+  let(:message){FactoryGirl.create :message}
+  let(:secret){FactoryGirl.create :secret}
 
   before (:each) do
     sign_in user
@@ -13,9 +17,6 @@ let(:user) {FactoryGirl.create :user}
 
   context "#create" do
     it "redirects to the users show page" do
-      receiver = FactoryGirl.create(:user)
-      algorithm = FactoryGirl.create(:algorithm)
-      message = FactoryGirl.create(:message)
       params = FactoryGirl.attributes_for(:secret).merge(receiver_id: receiver.id, algorithm_id: algorithm.id, sender_id: user.id, message_id: message.id)
       post :create, params
       expect(response).to redirect_to(user_path(user))
@@ -23,7 +24,6 @@ let(:user) {FactoryGirl.create :user}
 
     it "redirects to the secrets page if you mess up" do
       request.env["HTTP_REFERER"] = secrets_path
-      receiver = FactoryGirl.create(:user)
       params = FactoryGirl.attributes_for(:secret).merge(receiver_id: receiver.id)
       post :create, params
       expect(response).to redirect_to(request.env["HTTP_REFERER"])
@@ -33,15 +33,12 @@ let(:user) {FactoryGirl.create :user}
 
   context "#show" do
     it "redirects to the secret message if solved" do
-      secret = FactoryGirl.create(:secret)
-      secret.solved = true
-      secret.save!
-      get :show, id: secret.message_id
-      expect(assigns(:secret)).to redirect_to(message_path)
+      params = FactoryGirl.attributes_for(:secret).merge(receiver_id: receiver.id, algorithm_id: algorithm.id, sender_id: user.id, message_id: message.id)
+      get :show, id: params[:sender_id]
+      expect(response).to redirect_to(message_path)
     end
 
     it "redirects to the algorithm if the secret message is not solved" do
-      secret = FactoryGirl.create(:secret)
       params = FactoryGirl.attributes_for(:algorithm).merge(secret_id: secret.id)
       get :show, id: params[:secret_id]
       expect(response).to redirect_to("/algorithms/#{secret.algorithm.id}?secret_id=#{secret.id}")
