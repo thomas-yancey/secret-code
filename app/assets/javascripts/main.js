@@ -45,6 +45,7 @@ $( document).ready(function(){
         modal: true,
         open: function() {
             $('.received-messages').clone().appendTo($(this)).show();
+            $('.ui-dialog :button').blur();
         },
         close: function() {
           $('.ui-dialog').remove()
@@ -60,6 +61,7 @@ $( document).ready(function(){
         modal: true,
         open: function() {
             $('.sent-messages').clone().appendTo($(this)).show();
+            $('.ui-dialog :button').blur();
         },
         close: function() {
           $('.ui-dialog').remove()
