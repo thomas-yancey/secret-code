@@ -23,26 +23,4 @@ class Algorithm < ActiveRecord::Base
     self.caseanswers.split(" ").map {|x| x.to_i }
   end
 
-# METHOD KEEPS TRYING TO CALL ON ALGORITHM INSTEAD OF CLASS
-  # def run_user_code(user_method)
-  #   binding.pry
-  #   array_of_answers = caseanswers_to_array
-  #   array_of_inputs = casetests_to_array
-  #   incorrect_answers = []
-
-  #   array_of_inputs.each_with_index do |inputs,idx|
-  #     begin
-  #       Method.method(user_method).call(inputs[0],inputs[1])
-  #     rescue
-  #       incorrect_answers << [inputs[0],inputs[1]]
-  #     else
-  #       if method(user_method).call(inputs[0],inputs[1]) != array_of_answers[idx]
-  #           binding.pry
-  #           incorrect_answers << [inputs[0],inputs[1]]
-  #       end
-  #     end
-  #   end
-  #   incorrect_answers
-  # end
-
 end

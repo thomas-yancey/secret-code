@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
   def create
-    # create button that creates new friend request in friendships index
     @friendship = current_user.friendships.build(friends_params)
     if friends_params[:user].id != friends_params[:friend_id] && @friendship.save
       binding.pry

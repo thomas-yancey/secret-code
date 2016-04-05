@@ -1,6 +1,5 @@
 class AlgorithmsController < ApplicationController
 
-
   def update
     answer = params[:algorithm][:answer]
     algorithm = Algorithm.find_by(id: params[:id])
