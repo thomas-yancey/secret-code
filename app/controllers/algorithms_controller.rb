@@ -1,5 +1,6 @@
 class AlgorithmsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def show
     @secret = Secret.find_by(id: params[:secret_id])
     @algorithm = Algorithm.find(params[:id])

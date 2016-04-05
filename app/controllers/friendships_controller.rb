@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @friendship = current_user.friendships.build(friends_params)
     if friends_params[:user].id != friends_params[:friend_id] && @friendship.save
