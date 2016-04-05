@@ -2,7 +2,8 @@ class FriendshipsController < ApplicationController
   def create
     # create button that creates new friend request in friendships index
     @friendship = current_user.friendships.build(friends_params)
-    if @friendship.save
+    if friends_params[:user].id != friends_params[:friend_id] && @friendship.save
+      binding.pry
       flash[:notice] = "Friend request sent!"
       redirect_to :back
     else
