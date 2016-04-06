@@ -9,16 +9,16 @@
 <h3>Friend Requests</h3>
 <ul>
 <% @user.requested_friendships.each do |request| %>
-<li><%=request.email %></li>
-<li><%= link_to "Accept Request", friendship_path(id: request), method: "put" %></li>
-<li><%= link_to "Decline Request", friendship_path(id: request), method: :delete %></li>
+<li><%=request.username %></li>
+<li><%= link_to "✓", friendship_path(id: request), method: "put" %></li>
+<li><%= link_to "✗", friendship_path(id: request), method: :delete %></li>
 <% end %>
 </ul>
 <h3>Friends</h3>
-  <%=link_to "Add friends", friendships_path %>
+  <%=link_to "Add Friends", friendships_path %>
 <ul>
   <% @user.friends.each do |friend| %>
-    <li><%=friend.email%>
+    <li><%=friend.username%>
     <% if current_user_profile?(@user) %>
     <%= link_to "Remove", friendship_path(id: friend), method: :delete %>
 <% end %>

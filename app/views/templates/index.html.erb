@@ -1,13 +1,8 @@
-<%@templates.each do |template|%>
-<!-- We need to get sample images, not the content. -->
-<section>
-
-  <img src="<%=template.preview_url%>">
-
-  <%=template.title%>
-
-  <%=link_to "Use this template", new_message_path(template_id: template.id) %>
-
-</section>
-
+<main>
+  <%@templates.each do |template|%>
+  <div class="templates">
+    <%=link_to template.title, new_message_path(template_id: template.id) %><br />
+    <img src="<%=template.preview_url%>">
+  </div>
 <% end %>
+</main>

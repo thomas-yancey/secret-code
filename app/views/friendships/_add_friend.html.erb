@@ -1,8 +1,9 @@
+<main>
 <div class="user">
-  <%= user.username %><br>
-  <%= user.email %>
+  <%= user.username %>
   <%= form_for @friendship, url: friendships_path do |f| %>
-    <%= f.hidden_field :friend_id, value: user.id %>
+      <%= f.hidden_field :friend_id, value: user.id %>
     <%= f.submit "request friendship" %>
   <% end %>
-</div><br>
+</div>
+</main>

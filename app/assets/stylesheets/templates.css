@@ -1,4 +1,12 @@
-// Place all the styles related to the templates controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.templates {
+  display: inline-block;
+  margin: 20px;
+  width: 150px;
+  height: 200px;
+  font-size: 2.2rem;
+}
 
+.templates img {
+  border: 1px solid #ccc;
+  margin: 15px 0;
+}
