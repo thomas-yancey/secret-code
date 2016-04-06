@@ -37,6 +37,17 @@ $( document).ready(function(){
     })
   });
 
+  $(".friends-list").on("submit", ".new_friendship", function(event){
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: event.currentTarget.action,
+      data: $(this).serialize()
+    }).done(function(response){
+      $(".friends-list").html(response)
+    })
+  })
+
   $('.received-messages-button').on('click', function(event){
       $('<div id="dialog-form">Received Messages</div>').dialog({
         autoOpen: true,
