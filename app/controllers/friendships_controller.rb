@@ -21,6 +21,9 @@ class FriendshipsController < ApplicationController
       @not_yet_requested = User.where.not(id: curr_friend_ids + curr_friend_request_ids )
       @friendship = Friendship.new
       render "friendships/index", locals: {pending: @curr_friend_requests, user: @not_yet_requested}, layout: false
+    else
+      flash[:notice] ="Friend request sent!"
+      redirect_to :back
     end
     else
       flash[:notice] = "Unable to send friend request."

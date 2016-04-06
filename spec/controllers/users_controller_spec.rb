@@ -23,12 +23,4 @@ describe UsersController do
     end
   end
 
-  context "index" do
-    it "should stop users from visiting index page without a message id" do
-      sign_in @user
-      get :index, receiver_id: @user
-      expect(response).to redirect_to(root_path)
-    end
-  end
-
 end
