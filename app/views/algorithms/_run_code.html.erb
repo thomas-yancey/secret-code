@@ -1,6 +1,9 @@
 <% if answer.empty? %>
   <%=link_to "Your message!", @secret.message%>
 <% else %>
- <% woot = answer.map {|thing| thing.join(",")}.join("|") %>
- <%= woot %>
+ <% woot = incorrect_responses = answer.map do |inputs| %>
+  <% "#{inputs[0..-2].join(",")} does not equal #{inputs[-1]}" %>
+ <% end %>
+ <% binding.pry %>
+ <%= woot.join("|") %>
 <% end %>
