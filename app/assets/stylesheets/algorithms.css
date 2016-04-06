@@ -1,3 +1,36 @@
-// Place all the styles related to the algorithms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.algorithm-container {
+  margin: 0 15px 15px 0;
+  padding: 0;
+  float: right;
+  width: 48%;
+  height: 500px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.algorithm-container button,
+.your-message-link {
+  display: block;
+  padding: 6px;
+  background-color: #FFCB00;
+  border: 2px solid #F68A1D;
+  border-radius: 8px;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.algorithm-container a:link,
+.algorithm-container a:visited {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1273AC;
+}
+
+.algorithm-container a:hover,
+.algorithm-container a:active {
+  color: #F68A1D;
+}
+
+.your-message-link {
+  margin-top: 20px;
+}
