@@ -36,6 +36,12 @@ FactoryGirl.define do
     <p>Fake Template3</p>
   </body>"
   end
+
+  factory :friendship do
+    association :user, factory: :user
+    association :friend, factory: :user
+    approved false
+  end
 end
 
 

@@ -17,6 +17,7 @@ describe UsersController do
     end
 
     it "should have a current user" do
+      sign_in @user
       get :show, id: @user
       expect(response).to be_successful
     end
@@ -24,6 +25,7 @@ describe UsersController do
 
   context "index" do
     it "should stop users from visiting index page without a message id" do
+      sign_in @user
       get :index, receiver_id: @user
       expect(response).to redirect_to(root_path)
     end

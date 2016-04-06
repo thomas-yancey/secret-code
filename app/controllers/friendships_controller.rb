@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @friendship = current_user.friendships.build(friends_params)
     if friends_params[:user].id != friends_params[:friend_id] && @friendship.save
@@ -23,7 +24,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
     @friendship.destroy
-    flash[:notice] = "You unfriended that guy."
+    flash[:notice] = "You have removed that friend."
     redirect_to :back
   end
 
