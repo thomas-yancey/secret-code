@@ -1,45 +1,56 @@
-<main class="clearfix">
+<main class="clearfix user-page">
 <%if current_user_profile?(@user)%>
 
-<div class="user-friends">
-  <div class="create-link">
-    <%=link_to "Create a Secret Message!", templates_path%>
-  </div>
+<div class="create-link">
+  <%=link_to "Create a Secret Message!", templates_path%>
+</div>
 
-<h3>Friend Requests</h3>
-<ul>
-<% @user.requested_friendships.each do |request| %>
-<li><%=request.username %></li>
-<li><%= link_to "✓", friendship_path(id: request), method: "put" %></li>
-<li><%= link_to "✗", friendship_path(id: request), method: :delete %></li>
-<% end %>
-</ul>
+<div class="user-friends">
+
+<div class="friend-requests">
+  <h3>Friend Requests</h3>
+  <ul>
+  <% @user.requested_friendships.each do |request| %>
+    <li><%=request.username %>
+        <%= link_to "✓", friendship_path(id: request), method: "put", class: "accept-friend" %>
+        <%= link_to "✗", friendship_path(id: request), method: :delete, class: "reject-friend" %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="friends">
 <h3>Friends</h3>
-  <%=link_to "Add Friends", friendships_path %>
-<ul>
-  <% @user.friends.each do |friend| %>
-    <li><%=friend.username%>
-    <% if current_user_profile?(@user) %>
-    <%= link_to "Remove", friendship_path(id: friend), method: :delete %>
-<% end %>
-</li>
-<% end %>
-</ul>
+  <ul>
+    <% @user.friends.each do |friend| %>
+      <li><%=friend.username%>
+          <% if current_user_profile?(@user) %>
+          <%= link_to "✗", friendship_path(id: friend), method: :delete, class: "delete-friend" %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
 </div>
 
 <div class="user-messages">
+
   <h3 class="received-messages-button">Received Messages</h3>
-  <div class="received-messages"><%= render @user.received_messages %></div>
+
+  <div class="received-messages">
+    <%= render @user.received_messages %>
+  </div>
 
   <h3 class="sent-messages-button">Sent Messages</h3>
-  <div class="sent-messages"><%= render @user.sent_messages %></div>
+
+  <div class="sent-messages">
+    <%= render @user.sent_messages %>
+  </div>
+  <div class="add-friend">
+    <%=link_to "Add Friends", friendships_path %>
+  </div>
+
 </div>
 
-<% else %>
-  <div class="add-friend">
-    <% unless current_user == @user %>
-      <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
 </main>

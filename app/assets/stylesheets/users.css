@@ -6,26 +6,79 @@
   clear: both;
 }
 
-main.user-show {
-  height: auto;
+.user-page ul {
+  margin: 0;
+  padding: 0;
 }
-.user-friends{
-float: left;
-height: 600px;
-}
-.user-messages {
-float: right;
-height: 600px;
+
+.create-link {
+  background: url("/assets/magnify.png") no-repeat;
+  height: 300px;
+  width: 300px;
+  float: right;
+  margin: -20px;
 }
 
 .create-link a {
-  height: 20px;
-  background-color: yellow;
-}
-
-.create-link a {
-  font-size: 1.25rem;
+  display: block;
+  float: right;
+  margin: 50px;
+  width: 120px;
   color: #FF0000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  transform: rotate(10deg);
+}
+
+.create-link a:hover {
+  color: #F68A1D;
+}
+
+.user-friends{
+  float: left;
+  width: 40%;
+}
+
+.friend-requests,
+.friends,
+.add-friend,
+.received-messages-button,
+.sent-messages-button {
+  display: block;
+  background: #FFCB00;
+  font-size: 1rem;
+}
+
+.accept-friend,
+.reject-friend {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  font-size: 24px;
+  border: 2px solid blue;
+  border-radius: 50%;
+  background: yellow;
+}
+
+.delete-friend {
+  display: inline-block;
+  background: yellow;
+}
+
+.delete-friend {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  font-size: 20px;
+  border: 2px solid blue;
+  border-radius: 50%;
+}
+
+.user-messages {
+  float: left;
+  width: 30%;
 }
 
 .received-messages-button,
@@ -37,6 +90,11 @@ height: 600px;
 .sent-messages-button:hover {
   color: #F68A1D;
   cursor: pointer;
+}
+
+.received-messages-button {
+}
+.sent-messages-button {
 }
 
 .message-list a:link,
