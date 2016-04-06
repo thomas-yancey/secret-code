@@ -26,7 +26,9 @@ $( document).ready(function(){
 
   $('#new_message').on('click', function(event){
   event.preventDefault();
-    var dataTransfer = {message:{content: encodeURIComponent(editor.getValue()), template_id: 1}};
+    var subbed_content = editor.getValue().replace(/<\/?script>/g,"CHILDRENS SITE!")
+    var content = encodeURIComponent(subbed_content)
+    var dataTransfer = {message:{content: content, template_id: 1}};
     $.ajax({
       url: event.currentTarget.action,
       data: dataTransfer,
