@@ -46,33 +46,45 @@
 .sent-messages-button {
   display: block;
   background: #FFCB00;
-  font-size: 1rem;
+}
+
+.friend-requests,
+.friends {
+  color: #1273AC;
+  display: block;
+  width: 80%;
+  height: auto;
+  margin: 15px 40px;
+  padding: 10px;
+  font-size: 1.75rem;
+  border: 3px solid #1273AC;
+  border-radius: 12px;
+}
+
+.friend-requests h3,
+.friends h3 {
+  margin: 0;
+  padding: 5px;
+}
+
+.friend-requests li,
+.friends li {
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 
 .accept-friend,
-.reject-friend {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-  line-height: 24px;
-  font-size: 24px;
-  border: 2px solid blue;
-  border-radius: 50%;
-  background: yellow;
-}
-
-.delete-friend {
-  display: inline-block;
-  background: yellow;
-}
-
+.reject-friend,
 .delete-friend {
   display: inline-block;
   height: 20px;
   width: 20px;
-  line-height: 20px;
   font-size: 20px;
-  border: 2px solid blue;
+  line-height: 20px;
+  padding: 1px;
+  background: #fff;
+  border: 2px solid #1273AC;
   border-radius: 50%;
 }
 
@@ -82,19 +94,34 @@
 }
 
 .received-messages-button,
-.sent-messages-button {
-  color: #638049;
+.sent-messages-button,
+.add-friend {
+  color: #1273AC;
+  display: block;
+  height: 80px;
+  width: 60%;
+  margin: 15px 40px;
+  padding: 10px;
+  font-size: 1.75rem;
+  border: 3px solid #1273AC;
+  border-radius: 12px;
+}
+
+.add-friend a:link,
+.add-friend a:visited {
+  color: #1273AC;
+  font-weight: bold;
+}
+
+.add-friend a:hover,
+.add-friend a:active {
+  color: #F68A1D;
 }
 
 .received-messages-button:hover,
 .sent-messages-button:hover {
   color: #F68A1D;
   cursor: pointer;
-}
-
-.received-messages-button {
-}
-.sent-messages-button {
 }
 
 .message-list a:link,

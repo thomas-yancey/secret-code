@@ -34,22 +34,17 @@
 </div>
 
 <div class="user-messages">
-
   <h3 class="received-messages-button">Received Messages</h3>
-
   <div class="received-messages">
     <%= render @user.received_messages %>
   </div>
-
   <h3 class="sent-messages-button">Sent Messages</h3>
-
   <div class="sent-messages">
     <%= render @user.sent_messages %>
   </div>
   <div class="add-friend">
     <%=link_to "Add Friends", friendships_path %>
   </div>
-
 </div>
 
   <% end %>
