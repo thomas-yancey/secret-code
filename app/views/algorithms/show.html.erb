@@ -1,16 +1,18 @@
 <div id="editor">
 <%= @algorithm.method_outline %>
 </div>
-<div class="algorithm-container">
-<p ><%= @algorithm.question %></p>
 
-<%= button_tag(:type => 'button') do %>
-  <% link_to "Run code", controller: :algorithms, action: :run_code, algorithm_id: @algorithm.id, secret_id: @secret.id %>
-<% end %>
-</div>
+<div class="algorithm-container">
+  <p><%= @algorithm.question %></p>
+
+  <%= button_tag(:type => 'button') do %>
+    <% link_to "Run Code!", controller: :algorithms, action: :run_code, algorithm_id: @algorithm.id, secret_id: @secret.id %>
+  <% end %>
 
 <div id="mistakes">
   <ul></ul>
+</div>
+
 </div>
 
 <script>
