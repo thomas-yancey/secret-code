@@ -33,19 +33,19 @@ describe FriendshipsController do
       sign_in user
       user_2 = User.create(email: "Jonny2@gmail.com", username: "jonny", password: "password", password_confirmation: "password")
       friendship = Friendship.create(user_id: user_2.id, friend_id: user.id)
-      patch :update, id: friendship.id, user_id: friendship.id, friend_id: friendship.friend_id
+      patch :update, id: friendship.user_id, friend_id: user.id
       expect(response).to redirect_to(request.env["HTTP_REFERER"])
-
     end
   end
 
   context "#destroy" do
     it "removes a friend from your friend list" do
+      request.env["HTTP_REFERER"] = friendships_path
       user = FactoryGirl.create(:user)
       sign_in user
-      friend = FactoryGirl.create(:friendship)
-      request.env["HTTP_REFERER"] = friendships_path
-      delete :destroy, id: friend.id
+      user_2 = User.create(email: "Jonny2@gmail.com", username: "jonny", password: "password", password_confirmation: "password")
+      friendship = Friendship.create(user_id: user_2.id, friend_id: user.id)
+      delete :destroy, id: friendship.user_id, friend_id: user.id
       expect(flash[:notice]).to eq "You have removed that friend."
     end
   end
