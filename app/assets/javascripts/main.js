@@ -41,12 +41,14 @@ $( document).ready(function(){
 
   $(".friends-list").on("submit", ".new_friendship", function(event){
     event.preventDefault();
+    var that = this
     $.ajax({
       method: "POST",
       url: event.currentTarget.action,
       data: $(this).serialize()
     }).done(function(response){
-      $(".friends-list").html(response)
+      $(".potential-friends").append(response);
+      $(that).parent().parent().remove();
     })
   })
 
