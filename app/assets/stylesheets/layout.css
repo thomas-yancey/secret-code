@@ -28,13 +28,13 @@ a:hover, a:active {
 
 header {
   height: 100px;
-  background: url("/assets/detective.png") no-repeat 20px 15px;
+  background: url("/assets/detective.png") no-repeat 50px 15px;
   background-color: #FFCB00;
   border-bottom: 3px solid #F68A1D;
 }
 
 header h1 {
-  margin: 0 0 0 150px;
+  margin: 0 0 0 200px;
   font-size: 5rem;
   text-shadow: 2px 2px #FF0000;
 }
@@ -93,6 +93,7 @@ nav a:active {
 
 }
 
+/* modals */
 #modal-window {
   position: fixed;
   z-index: 1500 !important;
