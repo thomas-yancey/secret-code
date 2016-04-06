@@ -1,11 +1,13 @@
-<section class = "friends-list">
+<section class = "potential-friends">
 
   <% if @curr_friend_requests %>
   <% @curr_friend_requests.each do |pending| %>
     <%= render partial: "friendships/pending_friend", locals: {pending: pending} %>
   <% end %>
 <% end %>
+</section>
 
+<section class = "friends-list">
 <% if @curr_friend_requests %>
   <% @not_yet_requested.each do |user| %>
     <% if current_user == user %>
@@ -14,4 +16,4 @@
     <% end %>
   <% end %>
 <% end %>
-</section
+</section>
