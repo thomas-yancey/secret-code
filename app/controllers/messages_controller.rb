@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if @message.save
       if request.xhr?
-        @users = User.all
+        @friends = current_user.friends
         render "users/_index", locals: {user: @users, message_id: @message.id}, layout: false
       else
         @users = User.all

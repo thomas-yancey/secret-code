@@ -10,7 +10,7 @@ $( document).ready(function(){
       method: "GET"
     }).done(function(response){
       if (response.match("Your message!")){
-        $('.algorithm-container').append(response);
+        $('.algorithm-container').html(response);
       } else {
         $('#mistakes').append("<ul>Failing test cases</ul>");
         response.trim().split("|").forEach(function(e){
@@ -38,7 +38,6 @@ $( document).ready(function(){
   });
 
   $('.received-messages-button').on('click', function(event){
-    console.log('pressed');
       $('<div id="dialog-form">Received Messages</div>').dialog({
         autoOpen: true,
         width: 520,
@@ -54,7 +53,6 @@ $( document).ready(function(){
   })
 
     $('.sent-messages-button').on('click', function(event){
-    console.log('pressed');
       $('<div id="dialog-form">Sent Messages</div>').dialog({
         autoOpen: true,
         width: 520,
