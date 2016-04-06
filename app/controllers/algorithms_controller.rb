@@ -1,6 +1,7 @@
 class AlgorithmsController < ApplicationController
   before_action :authenticate_user!
-  
+  SUPER_EXPRESSION = /\s*def(.|\n)*?end\s*/
+
   def show
     @secret = Secret.find_by(id: params[:secret_id])
     @algorithm = Algorithm.find(params[:id])
@@ -8,8 +9,13 @@ class AlgorithmsController < ApplicationController
 
   def run_code
     @secret = Secret.find_by(id: params[:secret_id])
-    @algorithm = Algorithm.find_by(id: params[:algorithm_id])
-    user_method = eval(URI.unescape(params[:data]))
+    @algorithm = Algorithm.find_by(id:params[:algorithm_id])
+    user_method = ""
+    if URI.unescape(params[:data]).match(SUPER_EXPRESSION) == nil
+      user_method = ""
+    else
+      user_method = eval(URI.unescape(params[:data]))
+    end
     array_of_answers = @algorithm.caseanswers_to_array
     array_of_inputs = @algorithm.casetests_to_array
 

@@ -10,12 +10,12 @@ $( document).ready(function(){
       method: "GET"
     }).done(function(response){
       if (response.match("Your message!")){
-        $('.algorithm-container').append(response)
+        $('.algorithm-container').append(response);
       } else {
         $('#mistakes').append("<ul>Failing test cases</ul>");
-        for (e of response.trim().split("|")){
+        response.trim().split("|").forEach(function(e){
           $('#mistakes').append("<li>" + e + "</li>");
-        }
+        });
       }
     })
   });
