@@ -4,6 +4,5 @@
  <% woot = incorrect_responses = answer.map do |inputs| %>
   <% "#{inputs[0..-2].join(",")} does not equal #{inputs[-1]}" %>
  <% end %>
- <% binding.pry %>
  <%= woot.join("|") %>
 <% end %>
