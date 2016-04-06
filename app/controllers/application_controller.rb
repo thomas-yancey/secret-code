@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   
  protected
 
+ def configure_permitted_parameters
+  devise_parameter_sanitizer.for(:sign_up) << :username
+ end
+ 
  def current_user_profile?(a_user)
   current_user == a_user
  end
