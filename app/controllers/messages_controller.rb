@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if @message.save
       if request.xhr?
-        @users = User.all
+        @friends = current_user.friends
         render "users/_index", locals: {user: @users, message_id: @message.id}, layout: false
       else
         @users = User.all
@@ -28,8 +28,8 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find_by(id: params[:id])
-    if @message.secrets.first.receiver == current_user
-      if @message.secrets.first.solved
+    if @message.secrets.first.receiver == current_user || owner?(@message)
+      if @message.secrets.first.solved || owner?(@message)
       else
         flash[:notice] = "Solve the puzzle!"
         redirect_to @message.secrets.first
@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
 private
 
   def message_params
-    params[:message][:content] = URI.unescape(params[:message][:content])
+    params[:message][:content] = URI.unescape(params[:message][:content]).gsub(/<\/?script>/,"KIDS DAMNIT!")
     params.require(:message).permit(:content, :template_id)
   end
 

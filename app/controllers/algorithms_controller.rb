@@ -27,10 +27,10 @@ class AlgorithmsController < ApplicationController
         begin
           method(user_method).call(inputs[0],inputs[1])
         rescue
-          incorrect_answers << [inputs[0],inputs[1]]
+          incorrect_answers << [inputs[0],inputs[1], array_of_answers[idx]]
         else
           if method(user_method).call(inputs[0],inputs[1]) != array_of_answers[idx]
-            incorrect_answers << [inputs[0],inputs[1]]
+            incorrect_answers << [inputs[0],inputs[1], array_of_answers[idx]]
           end
         end
       }.call

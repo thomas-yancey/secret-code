@@ -10,7 +10,7 @@ $( document).ready(function(){
       method: "GET"
     }).done(function(response){
       if (response.match("Your message!")){
-        $('.algorithm-container').append(response);
+        $('.algorithm-container').html(response);
       } else {
         $('#mistakes').append("<ul>Failing test cases</ul>");
         response.trim().split("|").forEach(function(e){
@@ -26,7 +26,9 @@ $( document).ready(function(){
 
   $('#new_message').on('click', function(event){
   event.preventDefault();
-    var dataTransfer = {message:{content: encodeURIComponent(editor.getValue()), template_id: 1}};
+    var subbed_content = editor.getValue().replace(/<\/?script>/g,"CHILDRENS SITE!")
+    var content = encodeURIComponent(subbed_content)
+    var dataTransfer = {message:{content: content, template_id: 1}};
     $.ajax({
       url: event.currentTarget.action,
       data: dataTransfer,
@@ -37,8 +39,18 @@ $( document).ready(function(){
     })
   });
 
+  $(".friends-list").on("submit", ".new_friendship", function(event){
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: event.currentTarget.action,
+      data: $(this).serialize()
+    }).done(function(response){
+      $(".friends-list").html(response)
+    })
+  })
+
   $('.received-messages-button').on('click', function(event){
-    console.log('pressed');
       $('<div id="dialog-form">Received Messages</div>').dialog({
         autoOpen: true,
         width: 520,
@@ -54,7 +66,6 @@ $( document).ready(function(){
   })
 
     $('.sent-messages-button').on('click', function(event){
-    console.log('pressed');
       $('<div id="dialog-form">Sent Messages</div>').dialog({
         autoOpen: true,
         width: 520,

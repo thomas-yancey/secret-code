@@ -1,4 +1,6 @@
-<% if @curr_friend_requests %>
+<section class = "friends-list">
+
+  <% if @curr_friend_requests %>
   <% @curr_friend_requests.each do |pending| %>
     <%= render partial: "friendships/pending_friend", locals: {pending: pending} %>
   <% end %>
@@ -12,3 +14,4 @@
     <% end %>
   <% end %>
 <% end %>
+</section
