@@ -22,7 +22,6 @@ FactoryGirl.define do
   end
 
   factory :message do
-    association :template, factory: :template
     content "Hello world"
   end
 

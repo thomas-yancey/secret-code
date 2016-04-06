@@ -8,15 +8,15 @@
 <div class="user-friends">
 
 <div class="friend-requests">
-  <h3>Friend Requests</h3>
-  <ul>
+<h3>Friend Requests</h3>
+<ul>
   <% @user.requested_friendships.each do |request| %>
     <li><%=request.username %>
         <%= link_to "✓", friendship_path(id: request), method: "put", class: "accept-friend" %>
         <%= link_to "✗", friendship_path(id: request), method: :delete, class: "reject-friend" %>
     </li>
     <% end %>
-  </ul>
+</ul>
 </div>
 
 <div class="friends">

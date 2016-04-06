@@ -44,7 +44,7 @@ private
 
   def message_params
     params[:message][:content] = URI.unescape(params[:message][:content]).gsub(/<\/?script>/,"KIDS DAMNIT!")
-    params.require(:message).permit(:content, :template_id)
+    params.require(:message).permit(:content)
   end
 
 end

@@ -123,7 +123,7 @@ algorithms = Algorithm.all
 templates = Template.all
 users = User.all
 (count_of_users * 5).times do
-  Message.create(template: templates.sample, content: Faker::Lorem.paragraph(2))
+  Message.create(content: Faker::Lorem.paragraph(2))
 end
 
 Message.all.each do |message|
