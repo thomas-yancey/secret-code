@@ -14,13 +14,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(friends_params)
     if friends_params[:user].id != friends_params[:friend_id] && @friendship.save
       if request.xhr?
-      curr_friend_ids = Friendship.current_friend_ids(current_user)
-      curr_friend_request_ids = Friendship.current_friend_request_ids(current_user)
-      @curr_friends = User.where(id: curr_friend_ids)
-      @curr_friend_requests = User.where(id: curr_friend_request_ids)
-      @not_yet_requested = User.where.not(id: curr_friend_ids + curr_friend_request_ids )
-      @friendship = Friendship.new
-      render "friendships/index", locals: {pending: @curr_friend_requests, user: @not_yet_requested}, layout: false
+      render partial: "friendships/pending_friend", locals: {pending: User.find(friends_params[:friend_id])}, layout: false
     else
       flash[:notice] ="Friend request sent!"
       redirect_to :back
