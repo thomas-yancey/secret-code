@@ -37,13 +37,10 @@ ActiveRecord::Schema.define(version: 20160403175453) do
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.integer  "template_id", null: false
-    t.text     "content",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "messages", ["template_id"], name: "index_messages_on_template_id", using: :btree
 
   create_table "secrets", force: true do |t|
     t.integer  "sender_id",                    null: false

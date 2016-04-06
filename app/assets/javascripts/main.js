@@ -2,11 +2,10 @@ $( document).ready(function(){
 
   $('button').on('click',function(e){
     event.preventDefault();
-    var dataTransfer = {data:encodeURIComponent(editor.getValue())};
     $('#mistakes').empty();
     $.ajax({
       url: event.currentTarget.children[0].getAttribute('href'),
-      data: dataTransfer,
+      data: {data:encodeURIComponent(editor.getValue())},
       method: "GET"
     }).done(function(response){
       if (response.match("Your message!")){
@@ -19,6 +18,30 @@ $( document).ready(function(){
       }
     })
   });
+
+  if ($(".friend-requests").length > 0){
+    setInterval(function(){
+    $.ajax({
+      method: "GET",
+      url: window.location.href + '/received_messages'
+    }).done(function(response){
+      if($('.received-messages').children().html() != $(response).html()){
+        $('.received-messages').children().html($(response).html());
+        }
+      });
+    }, 5000);
+
+    setInterval(function(){
+    $.ajax({
+      method: "GET",
+      url: window.location.href + '/requested_friendships'
+    }).done(function(response){
+      if($('.friend-requests').html() != response){
+        $('.friend-requests').html(response);
+        }
+      });
+    }, 5000);
+  }
 
   if (document.getElementById("myframe")){
     $('body').keyup(_.debounce( resetIframe, 150))
@@ -83,7 +106,6 @@ $( document).ready(function(){
   })
 
 });
-
 
 var resetIframe = function(){
   var current_editor_value = editor.getValue();
