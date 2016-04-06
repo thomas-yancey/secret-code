@@ -31,7 +31,7 @@ describe MessagesController do
 
     it "should redirect back if the message is invalid" do
       request.env["HTTP_REFERER"] = messages_path
-      params = FactoryGirl.attributes_for(:message)
+      params = FactoryGirl.attributes_for(:message).merge(content: "")
       post :create, message: params
       expect(response).to redirect_to(request.env["HTTP_REFERER"])
     end
