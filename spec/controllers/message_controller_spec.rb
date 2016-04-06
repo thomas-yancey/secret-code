@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe MessagesController do
-  
+
   before(:each) do
     @user = FactoryGirl.create(:user)
     sign_in @user
@@ -20,7 +20,7 @@ describe MessagesController do
       get :new
       expect(response).to be_success
     end
-  end  
+  end
 
   context "#create" do
     it "should save a valid new message" do
@@ -35,7 +35,7 @@ describe MessagesController do
       post :create, message: params
       expect(response).to redirect_to(request.env["HTTP_REFERER"])
     end
-  end  
+  end
 
   context "#show" do
     it "will redirect to the message if the secret is solved" do
@@ -44,12 +44,6 @@ describe MessagesController do
       @message.secrets << @secret
       get :show, id: @message.id
       expect(response).to render_template("messages/show")
-    end
-
-    it "will redirect to the algorithm if the secret is not solved" do
-      @message.secrets << @secret
-      get :show, id: @message.id
-      expect(response).to redirect_to(@message.secrets.first)
     end
 
     it "will redirect to the root page if a user is not the receiver" do
