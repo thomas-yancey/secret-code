@@ -14,7 +14,7 @@ class SecretsController < ApplicationController
 
   def show
     @secret = Secret.find_by(id: params[:id])
-    if @secret.solved
+    if @secret.solved || current_user == @secret.sender
       @message = @secret.message
       redirect_to @message
     else

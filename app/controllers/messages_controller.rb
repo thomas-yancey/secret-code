@@ -28,8 +28,8 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find_by(id: params[:id])
-    if @message.secrets.first.receiver == current_user
-      if @message.secrets.first.solved
+    if @message.secrets.first.receiver == current_user || owner?(@message)
+      if @message.secrets.first.solved || owner?(@message)
       else
         flash[:notice] = "Solve the puzzle!"
         redirect_to @message.secrets.first
