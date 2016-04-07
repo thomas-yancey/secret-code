@@ -1,0 +1,17 @@
+.user {
+  display: inline-block;
+  margin: 20px;
+  font-size: 1.25rem;
+}
+
+.friend-request {
+  font-size: 1rem;
+  color: #1273AC;
+  background: #FFCB00;
+  border: none;
+  border-radius: 8px;
+}
+
+.friend-request:hover {
+  color: #F68A1D;
+}

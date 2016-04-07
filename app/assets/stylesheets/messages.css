@@ -19,8 +19,14 @@ iframe {
   float: right;
   width: 48%;
   height: 500px;
+  border: none;
 }
 
 .yellow-text {
   color: #FFCB00;
+}
+
+.create-message-button {
+  margin: 0 0 20px 20px;
+  border-radius: 8px;
 }
