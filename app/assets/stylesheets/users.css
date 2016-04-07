@@ -1,5 +1,3 @@
-/* User Page */
-
 .clearfix:after {
   content: "";
   display: table;
@@ -139,4 +137,14 @@
 
 .sent-messages {
   display:none;
+}
+
+.ui-dialog {
+  border: 3px solid #1273AC !important;
+  border-radius: 8px;
+}
+
+.ui-widget-header {
+  border: none !important;
+  background: #FFCB00 !important;
 }
