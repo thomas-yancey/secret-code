@@ -15,3 +15,7 @@
 .friend-request:hover {
   color: #F68A1D;
 }
+
+.potential-friends p {
+  /*font-size: .75rem;*/
+}
