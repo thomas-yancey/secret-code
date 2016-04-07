@@ -25,8 +25,10 @@ $( document).ready(function(){
       method: "GET",
       url: window.location.href + '/received_messages'
     }).done(function(response){
-      if($('.received-messages').children().html() != $(response).html()){
-        $('.received-messages').children().html($(response).html());
+      if($('.received-messages').html().trim() != response.trim()){
+        $('.received-messages').html($(response).html());
+        $('.received-messages-button').text("New Message!").css("color", "red")
+
         }
       });
     }, 5000);
@@ -36,7 +38,7 @@ $( document).ready(function(){
       method: "GET",
       url: window.location.href + '/requested_friendships'
     }).done(function(response){
-      if($('.friend-requests').html() != response){
+      if($('.friend-requests').html().trim() != response.trim()){
         $('.friend-requests').html(response);
         }
       });
