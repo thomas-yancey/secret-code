@@ -1,10 +1,5 @@
 class MessagesController < ApplicationController
 
-  before_action :authenticate_user!
-
-  def run_code
-  end
-
   def new
     @message = Message.new
     @template = Template.find_by(id: params[:template_id])

@@ -5,10 +5,11 @@ describe MessagesController do
   before(:each) do
     @user = FactoryGirl.create(:user)
     sign_in @user
+    @user_2 = User.create(username: "chicken", email: "Chicken@chicken.com", password: "password", password_confirmation: "password")
     @algorithm = FactoryGirl.create(:algorithm)
     @message = FactoryGirl.create(:message)
     @template = FactoryGirl.create(:template)
-    @secret = Secret.create(sender_id: @user.id, receiver_id: @user.id, algorithm_id: @algorithm.id, message_id: @message.id)
+    @secret = Secret.create(sender_id: @user.id, receiver_id: @user_2.id, algorithm_id: @algorithm.id, message_id: @message.id)
   end
 
   after(:each) do

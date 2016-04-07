@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     curr_friend_ids = Friendship.current_friend_ids(current_user)

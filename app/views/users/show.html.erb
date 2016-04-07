@@ -1,5 +1,4 @@
 <main class="clearfix user-page">
-<%if current_user_profile?(@user)%>
 
 <div class="create-link">
   <%=link_to "Create a Secret Message!", templates_path%>
@@ -24,10 +23,8 @@
   <ul>
     <% @user.friends.each do |friend| %>
       <li><%=friend.username%>
-          <% if current_user_profile?(@user) %>
           <%= link_to "✗", friendship_path(id: friend), method: :delete, class: "delete-friend" %>
       </li>
-      <% end %>
     <% end %>
   </ul>
 </div>
@@ -46,6 +43,4 @@
     <%=link_to "Add Friends", friendships_path %>
   </div>
 </div>
-
-  <% end %>
 </main>

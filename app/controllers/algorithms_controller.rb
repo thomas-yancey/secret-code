@@ -1,17 +1,20 @@
 class AlgorithmsController < ApplicationController
-  before_action :authenticate_user!
-  SUPER_EXPRESSION = /\s*def(.|\n)*?end\s*/
+  ENSURE_VALID_METHOD = /\s*def(.|\n)*?end\s*/
 
   def show
     @secret = Secret.find_by(id: params[:secret_id])
     @algorithm = Algorithm.find(params[:id])
+    unless @secret.receiver == current_user
+      flash[:notice] = "That's not your secret!"
+      redirect_to root_path
+    end
   end
 
   def run_code
     @secret = Secret.find_by(id: params[:secret_id])
     @algorithm = Algorithm.find_by(id:params[:algorithm_id])
     user_method = ""
-    if URI.unescape(params[:data]).match(SUPER_EXPRESSION) == nil
+    if URI.unescape(params[:data]).match(ENSURE_VALID_METHOD) == nil
       user_method = ""
     else
       user_method = eval(URI.unescape(params[:data]))
