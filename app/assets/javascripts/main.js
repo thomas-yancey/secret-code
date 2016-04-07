@@ -26,7 +26,7 @@ $( document).ready(function(){
       url: window.location.href + '/received_messages'
     }).done(function(response){
       if($('.received-messages').html().trim() != response.trim()){
-        $('.received-messages').html($(response).html());
+        $('.received-messages').html(response);
         $('.received-messages-button').text("New Message!").css("color", "red")
 
         }
