@@ -30,6 +30,12 @@ describe MessagesController do
       expect(response).to redirect_to(users_path)
     end
 
+    it "should execute an xhr request if it saves" do
+      params = FactoryGirl.attributes_for(:message).merge(template_id: @template.id)
+      xhr :post, :create, message: params
+      expect(response).to render_template("users/_index")
+    end
+
     it "should redirect back if the message is invalid" do
       request.env["HTTP_REFERER"] = messages_path
       params = FactoryGirl.attributes_for(:message).merge(content: "")
@@ -45,6 +51,11 @@ describe MessagesController do
       @message.secrets << @secret
       get :show, id: @message.id
       expect(response).to render_template("messages/show")
+    end
+
+    it "will redirect home if the message id is invalid" do
+      get :show, id: 99
+      expect(response).to redirect_to(root_path)
     end
 
     it "will redirect to the root page if a user is not the receiver" do

@@ -14,13 +14,6 @@ describe AlgorithmsController do
     sign_out @user
   end
 
-  context "#show" do
-    it "should show the algorithm for the user to solve" do
-      get :show, id: @algorithm.id
-      expect(response).to render_template("algorithms/show")
-    end
-  end
-
   context "#run_code" do
     it "should display the user's message link upon completion" do
       get :run_code, data: URI.escape("def add(a,b)\n a+b \nend"), algorithm_id:@algorithm.id, secret_id: @secret.id
