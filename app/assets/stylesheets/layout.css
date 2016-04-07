@@ -24,6 +24,10 @@ a:hover, a:active {
   color: #F68A1D;
 }
 
+.alert, .notice {
+  text-align: center;
+}
+
 /* Header Styles */
 
 header {
