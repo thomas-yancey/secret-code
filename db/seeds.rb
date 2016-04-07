@@ -1,12 +1,9 @@
-count_of_users = 15
-count_of_messages = 3
 
-count_of_users.times do
-  user = User.new(username: Faker::Internet.user_name)
-  user.email = Faker::Internet.free_email(user.username)
-  user.password = "password"
-  user.save
-end
+  User.create(username: "petey101",email: "petey101@gmail.com", password: "password")
+  User.create(username: "tomdabomb",email: "tomdabomb@gmail.com", password: "password")
+  User.create(username: "greensneakers",email: "greensneakers@gmail.com", password: "password")
+  User.create(username: "jon-slickboi-silvestri",email: "slickboi4lyfe@gmail.com", password: "password")
+
 
 Template.create(title: "Castle",
   preview_url: "assets/template-previews/castle-preview.png",
@@ -110,7 +107,7 @@ Template.create(title: "Ocean",
                    method_outline: "def subtract(a,b)\n # your code here\nend",
                    casetests: "1,1 2,2 4,3 5,5",
                    caseanswers: "0 0 1 0")
-  Algorithm.create(question: "Create a method that takes two numbers and multiplies them other",
+  Algorithm.create(question: "Create a method that takes two numbers and multiplies them",
                    method_outline:"def multiply(a,b)\n # your code here\nend",
                    casetests:"1,1 2,2 4,3 5,5",
                    caseanswers: "1, 4, 12, 25")
@@ -122,12 +119,21 @@ Template.create(title: "Ocean",
 algorithms = Algorithm.all
 templates = Template.all
 users = User.all
-(count_of_users * 5).times do
-  Message.create(content: Faker::Lorem.paragraph(2))
+(users.count * 5).times do
+  Message.create(content: Template.second.content)
 end
 
 Message.all.each do |message|
-  Secret.create(sender: users.sample, receiver: users.sample, message: message, algorithm: algorithms.sample)
+  sender = users.sample
+  receiver = nil
+  until receiver != nil
+    potential = users.sample
+    if potential != sender
+      receiver = potential
+    end
+  end
+
+  Secret.create(sender: sender, receiver: receiver, message: message, algorithm: algorithms.sample)
 end
 
 
