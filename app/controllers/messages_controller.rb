@@ -1,10 +1,5 @@
 class MessagesController < ApplicationController
 
-  before_action :authenticate_user!
-
-  def run_code
-  end
-
   def new
     @message = Message.new
     @template = Template.find_by(id: params[:template_id])
@@ -28,14 +23,19 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find_by(id: params[:id])
-    if @message.secrets.first.receiver == current_user || owner?(@message)
-      if @message.secrets.first.solved || owner?(@message)
+    if @message
+      if  @message.secrets.first.receiver == current_user || owner?(@message)
+        if @message.secrets.first.solved || owner?(@message)
+        else
+          flash[:notice] = "Solve the puzzle!"
+          redirect_to @message.secrets.first
+        end
       else
-        flash[:notice] = "Solve the puzzle!"
-        redirect_to @message.secrets.first
+        flash[:notice] = "You can't do that!"
+        redirect_to root_path
       end
     else
-      flash[:notice] = "You can't do that!"
+      flash[:notice] = "There is no message"
       redirect_to root_path
     end
   end

@@ -1,9 +1,8 @@
 class SecretsController < ApplicationController
-  before_action :authenticate_user!
 
   def create
     secret = Secret.new(secret_params)
-    if current_user.id != secret_params[:receiver_id] && secret.save
+    if secret.save
       flash[:notice] = "Your secret was sent! Shhhhhh..."
       redirect_to current_user
     else
@@ -29,5 +28,6 @@ class SecretsController < ApplicationController
     algorithm = algorithms.sample
     params.permit(:receiver_id, :message_id).merge(sender: current_user, algorithm: algorithm)
   end
+
 
 end
