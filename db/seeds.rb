@@ -116,24 +116,3 @@ Template.create(title: "Ocean",
                    casetests:"1,1 2,2 4,3 5,5",
                    caseanswers: "1 1 1 1")
 
-algorithms = Algorithm.all
-templates = Template.all
-users = User.all
-(users.count * 5).times do
-  Message.create(content: Template.second.content)
-end
-
-Message.all.each do |message|
-  sender = users.sample
-  receiver = nil
-  until receiver != nil
-    potential = users.sample
-    if potential != sender
-      receiver = potential
-    end
-  end
-
-  Secret.create(sender: sender, receiver: receiver, message: message, algorithm: algorithms.sample)
-end
-
-
